@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>From a Random Thought to a Continuing Program | Sagar Parajuli</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-color: #0c1017;
+            --card-bg: #161b22;
+            --accent-pink: #e63946;
+            --accent-glow: rgba(230, 57, 70, 0.25);
+            --text-color: #e6edf3;
+            --muted-color: #8b949e;
+            --border-color: #30363d;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* Top Header Bar (Only Back button) */
+        .top-header {
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border-color);
+            background: rgba(12, 16, 23, 0.8);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .back-btn-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-color);
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 8px 18px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .back-btn-pill:hover {
+            color: #ffffff;
+            background: var(--accent-pink);
+            border-color: var(--accent-pink);
+            transform: translateX(-5px);
+            box-shadow: 0 4px 15px var(--accent-glow);
+        }
+
+        /* Animations */
+        .animate-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Hero & Article Header */
+        .category-badge {
+            background: linear-gradient(135deg, #e63946, #ff758c);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            display: inline-block;
+            box-shadow: 0 4px 12px var(--accent-glow);
+        }
+
+        .blog-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            line-height: 1.3;
+            background: linear-gradient(180deg, #ffffff 0%, #c9d1d9 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .blog-meta {
+            color: var(--muted-color);
+            font-size: 0.95rem;
+        }
+
+        .blog-subtitle {
+            color: #ffffff;
+            font-size: 1.6rem;
+            font-weight: 700;
+            position: relative;
+            padding-left: 15px;
+        }
+
+        .blog-subtitle::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10%;
+            height: 80%;
+            width: 4px;
+            background: var(--accent-pink);
+            border-radius: 2px;
+        }
+
+        /* Featured Image Styling */
+        .featured-image-container {
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+            margin: 30px 0;
+        }
+
+        .featured-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* Graphic Elements & Cards */
+        .quote-box {
+            position: relative;
+            background: linear-gradient(145deg, #181f2a, #12161f);
+            border: 1px solid var(--border-color);
+            border-left: 5px solid var(--accent-pink);
+            padding: 28px;
+            border-radius: 12px;
+            margin: 35px 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .quote-box:hover {
+            transform: translateY(-3px);
+        }
+
+        .quote-icon {
+            position: absolute;
+            top: -15px;
+            right: 25px;
+            font-size: 2.5rem;
+            color: rgba(230, 57, 70, 0.15);
+        }
+
+        .highlight-card {
+            background: rgba(22, 27, 34, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 25px 0;
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            transition: border-color 0.3s ease;
+        }
+
+        .highlight-card:hover {
+            border-color: var(--accent-pink);
+        }
+
+        .highlight-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--accent-glow);
+            color: var(--accent-pink);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            flex-shrink: 0;
+        }
+
+        .callout-box {
+            background: linear-gradient(135deg, rgba(230, 57, 70, 0.1), rgba(12, 16, 23, 0.9));
+            border: 1px dashed var(--accent-pink);
+            border-radius: 12px;
+            padding: 22px;
+            text-align: center;
+            margin-top: 35px;
+        }
+
+        .hashtag {
+            color: #58a6ff;
+            background: rgba(88, 166, 255, 0.1);
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            display: inline-block;
+            margin-right: 8px;
+            margin-top: 8px;
+            transition: background 0.3s ease;
+        }
+
+        .hashtag:hover {
+            background: rgba(88, 166, 255, 0.25);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Header (Back to Blog Button) -->
+    <header class="top-header">
+        <div class="container" style="max-width: 850px;">
+            <a href="blog.html" class="back-btn-pill">
+                <i class="fa-solid fa-arrow-left"></i> Back to Blog
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="container my-5 animate-up" style="max-width: 850px;">
+
+        <!-- Category Badge -->
+        <div class="mb-3">
+            <span class="category-badge"><i class="fa-solid fa-lightbulb me-1"></i> Program Development</span>
+        </div>
+
+        <!-- Title -->
+        <h1 class="blog-title mb-3">From a Random Thought to a Continuing Program and Perhaps a Missed Opportunity to Scale</h1>
+
+        <!-- Author & Date Metadata -->
+        <div class="blog-meta mb-4 pb-3 border-bottom border-secondary">
+            <span><i class="fa-regular fa-user me-1 text-danger"></i> Sagar Parajuli</span> &bull; 
+            <span><i class="fa-regular fa-calendar me-1 text-danger"></i> Sep 12, 2026</span> &bull; 
+            <span><i class="fa-regular fa-clock me-1 text-danger"></i> 4 min read</span>
+        </div>
+
+        <!-- Main Featured Image -->
+        <div class="featured-image-container">
+            <img src="images/3.jpeg" alt="From a Random Thought to a Continuing Program" class="featured-image">
+        </div>
+
+        <!-- Subtitle Header -->
+        <h2 class="blog-subtitle">The Catalyst for Change</h2>
+
+        <article class="mt-4">
+            
+            <!-- Animated Quote Card -->
+            <div class="quote-box">
+                <i class="fa-solid fa-quote-right quote-icon"></i>
+                <p class="mb-2 fs-5 fst-italic">"Insert key takeaway or inspiring quote from your article text here."</p>
+                <small class="text-muted">— Reflection on Innovation & Scaling</small>
+            </div>
+
+            <p>[Paste your first section of content here: how the initial random thought began and what inspired the project...]</p>
+
+            <!-- Visual Graphic Highlight Card 1 -->
+            <div class="highlight-card">
+                <div class="highlight-icon">
+                    <i class="fa-solid fa-diagram-project"></i>
+                </div>
+                <div>
+                    <h6 class="mb-1 text-white fw-bold">Building the Foundation</h6>
+                    <p class="mb-0 text-muted fs-6">Turning an idea into a structured operational program with sustainable impact.</p>
+                </div>
+            </div>
+
+            <p>[Paste your middle section of content here: details about the continuing program and execution steps...]</p>
+
+            <!-- Visual Graphic Highlight Card 2 -->
+            <div class="highlight-card">
+                <div class="highlight-icon">
+                    <i class="fa-solid fa-chart-line"></i>
+                </div>
+                <div>
+                    <h6 class="mb-1 text-white fw-bold">The Scaling Dilemma</h6>
+                    <p class="mb-0 text-muted fs-6">Analyzing the hurdles, missed opportunities, and lessons learned in expansion.</p>
+                </div>
+            </div>
+
+            <p>[Paste your concluding section here: reflections on the missed opportunity to scale and future takeaways...]</p>
+
+            <!-- Callout Summary Box -->
+            <div class="callout-box">
+                <i class="fa-solid fa-bullseye text-danger fs-3 mb-2"></i>
+                <h5 class="fw-bold text-white mb-2">Key Takeaway</h5>
+                <p class="mb-0 text-muted">Every small idea carries potential, but timing and scalable frameworks are essential for global reach.</p>
+            </div>
+
+            <!-- Hashtag Section -->
+            <div class="mt-4 pt-3 border-top border-secondary">
+                <span class="hashtag">#ProgramLeadership</span>
+                <span class="hashtag">#Innovation</span>
+                <span class="hashtag">#LessonsInScaling</span>
+            </div>
+        </article>
+    </main>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
