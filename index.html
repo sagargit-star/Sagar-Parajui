@@ -1,106 +1,683 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sagar Parajuli - Portfolio</title>
-  <style>
-    /* Global Reset & Dark Theme */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    body {
-      background-color: #0b0f19;
-      color: #ffffff;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      padding: 40px;
-    }
+        <meta name="description" content="Personal Portfolio of Sagar Parajuli">
+        <meta name="author" content="Sagar Parajuli">
 
-    .hero-container {
-      max-width: 900px;
-    }
+        <title>Sagar Parajuli - Website</title>
 
-    /* Heading Styling */
-    .hero-title {
-      font-size: 2.8rem;
-      font-weight: 700;
-      line-height: 1.3;
-      margin-bottom: 32px;
-      color: #f3f4f6;
-    }
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
 
-    /* Dynamic Text Element with Smooth Opacity Fade */
-    #dynamic-text {
-      display: inline-block;
-      color: #93c5fd; /* Accent color for the changing title */
-      opacity: 1;
-      transform: translateY(0);
-      /* Pure opacity & slight vertical translation — NO 3D/folding effects */
-      transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
-    }
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/bootstrap-icons.css" rel="stylesheet">
+        <link href="css/templatemo-tiya-golf-club.css" rel="stylesheet">
 
-    /* Faded-out state used during text transition */
-    #dynamic-text.fade-out {
-      opacity: 0;
-      transform: translateY(-4px);
-    }
+        <style>
+            /* ============================================================
+               COLOR VARIABLES & ROOT CONFIGURATION
+               ============================================================ */
+            :root {
+                --bg-dark-base: #030712;
+                --bg-card: rgba(15, 23, 42, 0.75);
+                --bg-card-hover: rgba(30, 41, 59, 0.85);
+                --accent-gold: #fce38a;
+                --accent-warm: #f3a152;
+                --text-main: #f8fafc;
+                --text-muted: #cbd5e1;
+                --border-subtle: rgba(252, 227, 138, 0.12);
+                --font-primary: 'DM Sans', sans-serif;
+            }
 
-    /* Button Styling */
-    .btn-about {
-      display: inline-block;
-      background-color: #eab308;
-      color: #000000;
-      font-weight: 600;
-      padding: 12px 28px;
-      border-radius: 9999px;
-      text-decoration: none;
-      transition: background-color 0.2s ease, transform 0.2s ease;
-    }
+            body {
+                background: linear-gradient(180deg, #030712 0%, #070d1e 35%, #0b132b 70%, #030712 100%) !important;
+                background-attachment: fixed !important;
+                color: var(--text-main) !important;
+                font-family: var(--font-primary);
+                overflow-x: hidden;
+            }
 
-    .btn-about:hover {
-      background-color: #ca8a04;
-      transform: translateY(-1px);
-    }
-  </style>
-</head>
-<body>
+            /* ============================================================
+               DYNAMIC TEXT FADE ANIMATION (REPLACES FOLDING ANIMATION)
+               ============================================================ */
+            #dynamic-text {
+                display: inline-block;
+                color: var(--accent-gold);
+                opacity: 1;
+                transform: translateY(0);
+                transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+            }
 
-  <div class="hero-container">
-    <h1 class="hero-title">
-      Welcome to the official portfolio of<br />
-      Sagar Parajuli <span id="dynamic-text">Public Health Researcher</span>
-    </h1>
+            #dynamic-text.fade-out {
+                opacity: 0;
+                transform: translateY(-4px);
+            }
+
+            /* ============================================================
+               CUSTOM DROPDOWN MENU FADE ANIMATION FIX
+               ============================================================ */
+            .dropdown-menu.custom-theme-dropdown {
+                background: rgba(15, 23, 42, 0.95) !important;
+                backdrop-filter: blur(16px);
+                -webkit-backdrop-filter: blur(16px);
+                border: 1px solid var(--border-subtle) !important;
+                border-radius: 14px !important;
+                box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6), 0 0 15px rgba(252, 227, 138, 0.1);
+                padding: 10px !important;
+                margin-top: 12px !important;
+                
+                display: block !important;
+                opacity: 0;
+                visibility: hidden;
+                transform: translateY(15px) scale(0.95);
+                transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
+                            transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
+                            visibility 0.3s ease !important;
+            }
+
+            .dropdown-menu.custom-theme-dropdown.show,
+            .nav-item.dropdown:hover .dropdown-menu.custom-theme-dropdown {
+                opacity: 1 !important;
+                visibility: visible !important;
+                transform: translateY(0) scale(1) !important;
+            }
+
+            .dropdown-menu.custom-theme-dropdown::before {
+                content: '';
+                position: absolute;
+                top: -7px;
+                left: 24px;
+                width: 12px;
+                height: 12px;
+                background: rgba(15, 23, 42, 0.95);
+                border-top: 1px solid var(--border-subtle);
+                border-left: 1px solid var(--border-subtle);
+                transform: rotate(45deg);
+            }
+
+            .dropdown-menu.custom-theme-dropdown .dropdown-item {
+                font-family: var(--font-primary) !important;
+                color: var(--text-muted) !important;
+                font-size: 0.92rem;
+                font-weight: 500;
+                padding: 10px 16px !important;
+                border-radius: 8px;
+                border-left: 3px solid transparent;
+                transition: all 0.25s ease-in-out !important;
+                position: relative;
+            }
+
+            .dropdown-menu.custom-theme-dropdown .dropdown-item:hover,
+            .dropdown-menu.custom-theme-dropdown .dropdown-item:focus {
+                color: var(--accent-gold) !important;
+                background: rgba(252, 227, 138, 0.1) !important;
+                border-left-color: var(--accent-gold);
+                transform: translateX(6px);
+                padding-left: 20px !important;
+            }
+
+            .nav-item.dropdown .dropdown-toggle::after {
+                transition: transform 0.3s ease;
+                vertical-align: middle;
+            }
+
+            .nav-item.dropdown:hover .dropdown-toggle::after,
+            .nav-item.dropdown .dropdown-toggle[aria-expanded="true"]::after {
+                transform: rotate(180deg);
+            }
+
+            /* Floating Navbar */
+            .navbar {
+                position: fixed !important;
+                top: 0;
+                left: 0;
+                right: 0;
+                z-index: 1030;
+                background: rgba(3, 7, 18, 0.85) !important;
+                backdrop-filter: blur(16px);
+                -webkit-backdrop-filter: blur(16px);
+                border-bottom: 1px solid var(--border-subtle);
+                transition: top 0.4s ease-in-out, background 0.3s ease;
+            }
+
+            .navbar.nav-hidden {
+                top: -90px !important;
+            }
+
+            .navbar-trigger {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 25px;
+                z-index: 1029;
+            }
+
+            .navbar.nav-hidden:hover,
+            .navbar-trigger:hover + .navbar,
+            .navbar:focus-within {
+                top: 0 !important;
+                background: rgba(3, 7, 18, 0.95) !important;
+            }
+
+            .navbar-nav .nav-link {
+                color: var(--text-main) !important;
+                font-weight: 500;
+                transition: color 0.3s ease, transform 0.3s ease;
+            }
+
+            .navbar-nav .nav-link:hover {
+                color: var(--accent-gold) !important;
+                transform: translateY(-2px);
+            }
+
+            .navbar-brand-title {
+                color: var(--accent-gold);
+                font-weight: 700;
+                font-size: 0.95rem;
+                letter-spacing: 2.5px;
+                text-transform: uppercase;
+                margin-top: 3px;
+            }
+
+            /* Hero Section */
+            .hero-section {
+                background: radial-gradient(circle at 50% 20%, #0f172a 0%, #030712 80%) !important;
+                padding-top: 140px;
+                padding-bottom: 80px;
+                position: relative;
+            }
+
+            .custom-btn {
+                background: linear-gradient(135deg, var(--accent-gold), var(--accent-warm)) !important;
+                color: #030712 !important;
+                font-weight: 700;
+                border: none !important;
+                border-radius: 30px;
+                padding: 12px 28px;
+                box-shadow: 0 4px 20px rgba(243, 161, 82, 0.25);
+                transition: all 0.3s ease !important;
+                display: inline-block;
+                text-decoration: none;
+            }
+
+            .custom-btn:hover {
+                transform: translateY(-3px) scale(1.02);
+                box-shadow: 0 8px 25px rgba(243, 161, 82, 0.45);
+                color: #000 !important;
+            }
+
+            /* Video Container & Overlay */
+            .video-wrapper {
+                position: relative;
+                width: 100%;
+                padding-top: 56.25%;
+                background-color: #000;
+                border-radius: 16px;
+                overflow: hidden;
+                cursor: pointer;
+            }
+
+            .video-wrapper img.video-thumbnail {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: transform 0.4s ease, filter 0.4s ease;
+            }
+
+            .video-wrapper:hover img.video-thumbnail {
+                transform: scale(1.03);
+                filter: brightness(0.9);
+            }
+
+            .play-btn-overlay {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 68px;
+                height: 68px;
+                background: rgba(252, 227, 138, 0.9);
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                box-shadow: 0 0 25px rgba(252, 227, 138, 0.5);
+                transition: transform 0.3s ease, background 0.3s ease;
+                z-index: 2;
+            }
+
+            .play-btn-overlay i {
+                font-size: 2rem;
+                color: #030712;
+                margin-left: 4px;
+            }
+
+            .video-wrapper:hover .play-btn-overlay {
+                transform: translate(-50%, -50%) scale(1.12);
+                background: var(--accent-gold);
+                box-shadow: 0 0 35px rgba(252, 227, 138, 0.8);
+            }
+
+            .video-wrapper iframe {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                border: 0;
+            }
+
+            /* Glassmorphism Cards */
+            .custom-block, .contact-info-body {
+                background: var(--bg-card) !important;
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+                border: 1px solid var(--border-subtle) !important;
+                border-radius: 16px !important;
+                box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5);
+                transition: all 0.4s ease;
+            }
+
+            .custom-block:hover {
+                background: var(--bg-card-hover) !important;
+                transform: translateY(-6px);
+                border-color: rgba(252, 227, 138, 0.35) !important;
+                box-shadow: 0 16px 40px rgba(243, 161, 82, 0.12);
+            }
+
+            .custom-block-date {
+                color: var(--accent-gold) !important;
+            }
+
+            .event-badge-icon {
+                width: 60px;
+                height: 60px;
+                border-radius: 12px;
+                background: rgba(252, 227, 138, 0.1);
+                border: 1px solid var(--border-subtle);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1.8rem;
+                color: var(--accent-gold);
+            }
+
+            .blended-photo {
+                width: 100%;
+                max-width: 420px;
+                height: auto;
+                border-radius: 20px;
+                -webkit-mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
+                mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
+                transition: transform 0.4s ease, filter 0.4s ease;
+                filter: drop-shadow(0 0 20px rgba(252, 227, 138, 0.15));
+            }
+
+            .blended-image-link:hover .blended-photo {
+                transform: scale(1.04);
+                filter: drop-shadow(0 0 30px rgba(252, 227, 138, 0.35));
+            }
+
+            .contact-overlay-card {
+                position: absolute;
+                top: 50%;
+                left: 5%;
+                transform: translateY(-50%);
+                z-index: 2;
+                width: 90%;
+                max-width: 360px;
+            }
+
+            section {
+                background: transparent !important;
+            }
+
+            .section-bg {
+                background: linear-gradient(180deg, rgba(7, 13, 30, 0.6) 0%, rgba(11, 19, 43, 0.8) 100%) !important;
+            }
+
+            h1, h2, h3, h4, h5, h6 {
+                color: #ffffff !important;
+            }
+
+            p {
+                color: var(--text-muted) !important;
+            }
+
+            .social-icon-link {
+                background-color: var(--bg-card) !important;
+                color: var(--accent-gold) !important;
+                border: 1px solid var(--border-subtle);
+                transition: all 0.3s ease;
+                width: 40px;
+                height: 40px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 50%;
+                text-decoration: none;
+            }
+
+            .social-icon-link:hover {
+                background-color: var(--accent-gold) !important;
+                color: var(--bg-dark-base) !important;
+                transform: translateY(-4px);
+            }
+
+            .offcanvas-dark {
+                background-color: rgba(3, 7, 18, 0.98) !important;
+                backdrop-filter: blur(16px);
+                color: var(--text-main);
+                border-left: 1px solid var(--border-subtle);
+            }
+
+            .site-footer {
+                background-color: #02040a !important;
+                border-top: 1px solid rgba(255, 255, 255, 0.05);
+            }
+
+            .text-muted-custom {
+                color: var(--text-muted) !important;
+            }
+        </style>
+    </head>
     
-    <a href="#about" class="btn-about">About Me</a>
-  </div>
+    <body>
+        <div class="navbar-trigger"></div>
 
-  <script>
-    // Dynamic text-swapping logic
-    const dynamicText = document.getElementById('dynamic-text');
-    const titles = ['Public Health Researcher', 'Public Health Advocate'];
-    let currentIndex = 0;
+        <main>
+            <nav class="navbar navbar-expand-lg">                
+                <div class="container">
+                    <a class="navbar-brand d-inline-flex flex-column align-items-center justify-content-center" href="#section_1" style="text-decoration: none; padding: 4px 0;">
+                        <svg width="38" height="42" viewBox="0 0 100 110" xmlns="http://www.w3.org/2000/svg" style="filter: drop-shadow(0px 2px 8px rgba(252, 227, 138, 0.3));">
+                            <defs>
+                                <linearGradient id="sagarLogoGold" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#FCE38A" />
+                                    <stop offset="50%" stop-color="#F3A152" />
+                                    <stop offset="100%" stop-color="#EAA146" />
+                                </linearGradient>
+                            </defs>
+                            <path d="M 75 28 C 75 12, 25 12, 25 35 C 25 65, 75 50, 75 80 C 75 102, 25 102, 25 86" 
+                                  fill="none" 
+                                  stroke="url(#sagarLogoGold)" 
+                                  stroke-width="14" 
+                                  stroke-linecap="round" 
+                                  stroke-linejoin="round"/>
+                        </svg>
+                        <span class="navbar-brand-title">
+                            Sagar
+                        </span>
+                    </a>
 
-    function changeTitle() {
-      // 1. Trigger the CSS fade-out
-      dynamicText.classList.add('fade-out');
+                    <div class="d-lg-none ms-auto me-3">
+                        <a class="btn custom-btn custom-border-btn" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">Menu</a>
+                    </div>
+                
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ms-lg-auto">
+                            <li class="nav-item"><a class="nav-link click-scroll" href="#section_1">Home</a></li>
+                            <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+                            <li class="nav-item"><a class="nav-link" href="research.html">Research</a></li>
+                            <li class="nav-item"><a class="nav-link" href="videos.html">Videos</a></li>
+                            <li class="nav-item"><a class="nav-link click-scroll" href="#section_2">Contact</a></li>
+                            
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Pages</a>
+                                <ul class="dropdown-menu custom-theme-dropdown" aria-labelledby="navbarLightDropdownMenuLink">
+                                    <li><a class="dropdown-item" href="projects.html">Projects</a></li>
+                                    <li><a class="dropdown-item" href="gallery.html">Gallery</a></li>
+                                    <li><a class="dropdown-item" href="activities.html">Activities</a></li>
+                                    <li><a class="dropdown-item" href="MediaCoverage.html">Media Coverage</a></li>
+                                    <li><a class="dropdown-item" href="moreaboutme.html">More about me</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
 
-      // 2. Change text halfway through, then trigger fade-in
-      setTimeout(() => {
-        currentIndex = (currentIndex + 1) % titles.length;
-        dynamicText.textContent = titles[currentIndex];
-        dynamicText.classList.remove('fade-out');
-      }, 500); // Matches the 0.5s transition time in CSS
-    }
+            <section class="hero-section d-flex justify-content-center align-items-center" id="section_1">
+                <div class="section-overlay"></div>
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-6 col-12 mb-5 mb-lg-0">
+                            <h2 class="text-white fw-light mb-2">Welcome to the official portfolio of</h2>
+                            <h1 class="text-white mb-4 pb-2">
+                                Sagar Parajuli  <span id="dynamic-text">Public Health Practitioner</span>
+                            </h1>
+                            
+                            <a href="#about_section" class="btn custom-btn mt-2">About Me</a>
+                        </div>
 
-    // Change title every 3.5 seconds
-    setInterval(changeTitle, 3500);
-  </script>
+                        <div class="col-lg-6 col-12">
+                            <div class="shadow-lg border border-warning border-opacity-25 rounded-4 overflow-hidden">
+                                <div class="video-wrapper" id="videoContainer" onclick="loadYouTubeVideo()" role="button" aria-label="Play Sixth Public Health Seminar Video">
+                                    <img src="https://img.youtube.com/vi/vio07zxdkoA/maxresdefault.jpg" alt="Sixth Public Health Seminar Video Thumbnail" class="video-thumbnail">
+                                    <div class="play-btn-overlay">
+                                        <i class="bi-play-fill"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-</body>
+            <section class="about-section section-padding" id="about_section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 col-12 text-center">
+                            <h2 class="mb-lg-5 mb-4">About Me</h2>
+                        </div>
+                    </div>
+
+                    <div class="row align-items-center">
+                        <div class="col-lg-6 col-12 me-auto">
+                            <h3 class="mb-3">Sagar Parajuli</h3>
+                            <p><strong>Born on 17 February 1998</strong>, Sagar Parajuli is a dedicated public health practitioner from Devchuli-12, Nawalparasi (East), Nepal who advocates for community health empowerment and evidence-based practice.</p>
+                            <p>Master's of Public Health Service Management student at Pokhara University, SRHR Activist, Golden 1000 Days Breastfeeding Counselor, Comprehensive Sexuality Education Trainer, Top 20 Glocal Teen Hero Finalist 2017, and former Province 4 SDGs Co-ordinator at Nepal Youth Network for SDGs (2017–2019).</p>
+                        </div>
+
+                        <div class="col-lg-5 col-12 ms-auto text-center mt-4 mt-lg-0">
+                            <a href="images/591773739_2903056983221032_679240425047064209_n.png" target="_blank" class="blended-image-link">
+                                <img src="images/591773739_2903056983221032_679240425047064209_n.png" class="img-fluid blended-photo" alt="Sagar Parajuli Portrait">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="events-section section-bg section-padding">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 col-12">
+                            <h2 class="mb-lg-4 mb-3">Memorable Milestones</h2>
+                        </div>
+
+                        <div class="row custom-block mb-4 p-4 align-items-center mx-0">
+                            <div class="col-lg-2 col-md-3 col-12 text-md-start mb-3 mb-md-0">
+                                <h6 class="custom-block-date mb-1">2017 A.D.</h6>
+                                <span class="badge bg-dark border border-warning text-warning">Recognition</span>
+                            </div>
+                            <div class="col-lg-2 col-md-3 col-12 mb-3 mb-md-0 text-center">
+                                <div class="event-badge-icon mx-auto">
+                                    <i class="bi-award"></i>
+                                </div>
+                            </div>
+                            <div class="col-lg-8 col-md-6 col-12">
+                                <h4>Global Teen Hero 20 Under 20 Finalist</h4>
+                                <p class="mb-2"><strong>Location:</strong> Soaltee Hotel, Kathmandu, Nepal</p>
+                                <p class="mb-3 text-muted-custom">Recognized for impactful youth advocacy and social work contributions across Nepal.</p>
+                                <a href="event-detail.html" class="btn custom-btn btn-sm">View Recognition Details</a>
+                            </div>
+                        </div>
+
+                        <div class="row custom-block p-4 align-items-center mx-0">
+                            <div class="col-lg-2 col-md-3 col-12 text-md-start mb-3 mb-md-0">
+                                <h6 class="custom-block-date mb-1">2025 A.D.</h6>
+                                <span class="badge bg-dark border border-warning text-warning">Academic</span>
+                            </div>
+                            <div class="col-lg-2 col-md-3 col-12 mb-3 mb-md-0 text-center">
+                                <div class="event-badge-icon mx-auto">
+                                    <i class="bi-mortarboard"></i>
+                                </div>
+                            </div>
+                            <div class="col-lg-8 col-md-6 col-12">
+                                <h4>Master of Public Health Milestone</h4>
+                                <p class="mb-2"><strong>Location:</strong> Pokhara University, Pokhara, Nepal</p>
+                                <p class="mb-3 text-muted-custom">Specializing in Public Health Service Management (PHSM) and health data facilitation.</p>
+                                <a href="event-listing.html" class="btn custom-btn btn-sm">View Academic Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="contact-section section-padding" id="section_2">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-5 col-12 mb-4 mb-lg-0">
+                            <h1 class="mb-3">Get in Touch</h1>
+                            <p class="mb-4 text-muted-custom" style="font-size: 1.1rem;">Feel free to reach out for research partnerships, health advocacy initiatives, or consultation.</p>
+                        </div>
+
+                        <div class="col-lg-6 col-12 ms-auto position-relative">
+                            <img src="images/WorldMap.svg" class="img-fluid opacity-25" alt="World Map Illustration">
+                            <div class="contact-info contact-overlay-card">
+                                <div class="contact-info-item">
+                                    <div class="contact-info-body p-4 text-white">
+                                        <h5 class="mb-3 text-warning"><i class="bi-geo-alt-fill me-2"></i> Location</h5>
+                                        <p class="mb-3 text-white">Devchuli-12, Nawalparasi (East), Nepal</p>
+                                        
+                                        <h5 class="mb-3 text-warning"><i class="bi-envelope-fill me-2"></i> Connect</h5>
+                                        <div class="d-flex gap-2">
+                                            <a href="https://x.com/ParajuliSgar" target="_blank" class="social-icon-link bi-twitter" aria-label="Twitter Profile"></a>
+                                            <a href="https://www.facebook.com/sagar.parajuli.1690" target="_blank" class="social-icon-link bi-facebook" aria-label="Facebook Profile"></a>
+                                            <a href="https://www.youtube.com/@sagarparajuli5118" target="_blank" class="social-icon-link bi-youtube" aria-label="YouTube Channel"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <div class="offcanvas offcanvas-end offcanvas-dark" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasExampleLabel">Menu</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <ul class="nav flex-column">
+                    <li class="nav-item"><a class="nav-link text-white" href="#section_1">Home</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="#about_section">About</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="#section_2">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <footer class="site-footer">
+            <div class="container py-5">
+                <div class="row">
+                    <div class="col-lg-6 col-12 mb-4 mb-lg-0">
+                        <h5 class="site-footer-title mb-3">Availability Hours</h5>
+                        <p class="mb-1 text-light"><strong>Mon-Fri:</strong> 6:00 AM - 7:00 AM | 7:00 PM - 9:00 PM</p>
+                        <p class="mb-3 text-light"><strong>Sat-Sun:</strong> 6:30 AM - 8:30 PM (Flexible)</p>
+                        <p class="mb-0 text-muted-custom" style="font-size: 0.95rem;">Feel free to send emails or messages during these time frames.</p>
+                    </div>
+
+                    <div class="col-lg-5 col-12 ms-auto text-lg-end">
+                        <h5 class="site-footer-title mb-3">Connect With Me</h5>
+                        <ul class="social-icon d-inline-flex gap-2 list-unstyled">
+                            <li class="social-icon-item"><a href="https://www.youtube.com/@sagarparajuli5118" target="_blank" class="social-icon-link bi-youtube" aria-label="YouTube Channel"></a></li>
+                            <li class="social-icon-item"><a href="https://x.com/ParajuliSgar" target="_blank" class="social-icon-link bi-twitter" aria-label="Twitter Profile"></a></li>
+                            <li class="social-icon-item"><a href="https://www.facebook.com/sagar.parajuli.1690" target="_blank" class="social-icon-link bi-facebook" aria-label="Facebook Profile"></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.bundle.min.js"></script>
+        <script src="js/jquery.sticky.js"></script>
+        <script src="js/click-scroll.js"></script>
+        <script src="js/modernizr.js"></script>
+        <script src="js/custom.js"></script>
+
+        <script>
+            // Smooth Opacity & Translation Text Transition
+            const dynamicText = document.getElementById('dynamic-text');
+            const titles = ['Public Health Practitioner', 'Public Health Researcher', 'Public Health Advocate'];
+            let currentIndex = 0;
+
+            function changeTitle() {
+                dynamicText.classList.add('fade-out');
+
+                setTimeout(() => {
+                    currentIndex = (currentIndex + 1) % titles.length;
+                    dynamicText.textContent = titles[currentIndex];
+                    dynamicText.classList.remove('fade-out');
+                }, 500);
+            }
+
+            setInterval(changeTitle, 3500);
+
+            // Dynamic YouTube Load Function
+            function loadYouTubeVideo() {
+                const container = document.getElementById('videoContainer');
+                container.innerHTML = `
+                    <iframe 
+                        src="https://www.youtube-nocookie.com/embed/vio07zxdkoA?autoplay=1" 
+                        title="Sixth Public Health Seminar Video" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        allowfullscreen>
+                    </iframe>
+                `;
+            }
+
+            // Navbar Autohide Script
+            document.addEventListener('DOMContentLoaded', function () {
+                const navbar = document.querySelector('.navbar');
+                const heroSection = document.getElementById('section_1');
+                let isTicking = false;
+
+                function handleNavbarVisibility() {
+                    if (!heroSection || !navbar) return;
+                    
+                    const heroBottom = heroSection.getBoundingClientRect().bottom;
+
+                    if (heroBottom <= 80) {
+                        navbar.classList.add('nav-hidden');
+                    } else {
+                        navbar.classList.remove('nav-hidden');
+                    }
+                    isTicking = false;
+                }
+
+                window.addEventListener('scroll', function() {
+                    if (!isTicking) {
+                        window.requestAnimationFrame(handleNavbarVisibility);
+                        isTicking = true;
+                    }
+                });
+                
+                handleNavbarVisibility();
+            });
+        </script>
+    </body>
 </html>
