@@ -1,86 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sagar Parajuli - Portfolio</title>
   <style>
-    /* Base dark mode styles matching your design */
+    /* Global Reset & Dark Theme */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     body {
       background-color: #0b0f19;
       color: #ffffff;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      margin: 0;
-      padding: 40px 20px;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 40px;
     }
 
-    /* Heading styling */
+    .hero-container {
+      max-width: 900px;
+    }
+
+    /* Heading Styling */
     .hero-title {
-      font-size: 2.5rem;
+      font-size: 2.8rem;
       font-weight: 700;
       line-height: 1.3;
-      margin-bottom: 24px;
+      margin-bottom: 32px;
+      color: #f3f4f6;
     }
 
-    /* Dynamic text container with smooth fade transition */
+    /* Dynamic Text Element with Smooth Opacity Fade */
     #dynamic-text {
       display: inline-block;
-      color: #a5b4fc; /* Highlighted color for the dynamic title */
+      color: #93c5fd; /* Accent color for the changing title */
       opacity: 1;
       transform: translateY(0);
+      /* Pure opacity & slight vertical translation — NO 3D/folding effects */
       transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
     }
 
-    /* Fade-out state applied during transition */
+    /* Faded-out state used during text transition */
     #dynamic-text.fade-out {
       opacity: 0;
-      transform: translateY(-4px); /* Subtle upward shift while fading out */
+      transform: translateY(-4px);
     }
 
-    /* Primary button styling */
-    .btn-primary {
-      background-color: #f59e0b;
+    /* Button Styling */
+    .btn-about {
+      display: inline-block;
+      background-color: #eab308;
       color: #000000;
-      border: none;
-      padding: 12px 28px;
-      font-size: 1rem;
       font-weight: 600;
+      padding: 12px 28px;
       border-radius: 9999px;
-      cursor: pointer;
-      transition: background-color 0.2s ease;
+      text-decoration: none;
+      transition: background-color 0.2s ease, transform 0.2s ease;
     }
 
-    .btn-primary:hover {
-      background-color: #d97706;
+    .btn-about:hover {
+      background-color: #ca8a04;
+      transform: translateY(-1px);
     }
   </style>
 </head>
 <body>
 
-  <header>
+  <div class="hero-container">
     <h1 class="hero-title">
-      Welcome to the official portfolio of<br>
+      Welcome to the official portfolio of<br />
       Sagar Parajuli <span id="dynamic-text">Public Health Researcher</span>
     </h1>
-    <button class="btn-primary">About Me</button>
-  </header>
+    
+    <a href="#about" class="btn-about">About Me</a>
+  </div>
 
   <script>
-    // JavaScript logic for smooth text fade transition
+    // Dynamic text-swapping logic
     const dynamicText = document.getElementById('dynamic-text');
     const titles = ['Public Health Researcher', 'Public Health Advocate'];
     let currentIndex = 0;
 
     function changeTitle() {
-      // Step 1: Start fade out
+      // 1. Trigger the CSS fade-out
       dynamicText.classList.add('fade-out');
 
-      // Step 2: Swap text mid-transition, then fade back in
+      // 2. Change text halfway through, then trigger fade-in
       setTimeout(() => {
         currentIndex = (currentIndex + 1) % titles.length;
         dynamicText.textContent = titles[currentIndex];
         dynamicText.classList.remove('fade-out');
-      }, 500); // 500ms matches the CSS transition time
+      }, 500); // Matches the 0.5s transition time in CSS
     }
 
     // Change title every 3.5 seconds
