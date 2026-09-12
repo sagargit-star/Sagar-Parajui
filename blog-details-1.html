@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seven Days Hide and Seek | Sagar Parajuli</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-color: #0c1017;
+            --card-bg: #161b22;
+            --accent-pink: #e63946;
+            --accent-glow: rgba(230, 57, 70, 0.25);
+            --text-color: #e6edf3;
+            --muted-color: #8b949e;
+            --border-color: #30363d;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* Top Header Bar (No navbar, only Back button) */
+        .top-header {
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border-color);
+            background: rgba(12, 16, 23, 0.8);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .back-btn-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-color);
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 8px 18px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .back-btn-pill:hover {
+            color: #ffffff;
+            background: var(--accent-pink);
+            border-color: var(--accent-pink);
+            transform: translateX(-5px);
+            box-shadow: 0 4px 15px var(--accent-glow);
+        }
+
+        /* Animations */
+        .animate-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Hero & Article Header */
+        .category-badge {
+            background: linear-gradient(135deg, #e63946, #ff758c);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            display: inline-block;
+            box-shadow: 0 4px 12px var(--accent-glow);
+        }
+
+        .blog-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            line-height: 1.3;
+            background: linear-gradient(180deg, #ffffff 0%, #c9d1d9 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .blog-meta {
+            color: var(--muted-color);
+            font-size: 0.95rem;
+        }
+
+        .blog-subtitle {
+            color: #ffffff;
+            font-size: 1.6rem;
+            font-weight: 700;
+            position: relative;
+            padding-left: 15px;
+        }
+
+        .blog-subtitle::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10%;
+            height: 80%;
+            width: 4px;
+            background: var(--accent-pink);
+            border-radius: 2px;
+        }
+
+        /* Graphic Elements & Cards */
+        .quote-box {
+            position: relative;
+            background: linear-gradient(145deg, #181f2a, #12161f);
+            border: 1px solid var(--border-color);
+            border-left: 5px solid var(--accent-pink);
+            padding: 28px;
+            border-radius: 12px;
+            margin: 35px 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .quote-box:hover {
+            transform: translateY(-3px);
+        }
+
+        .quote-icon {
+            position: absolute;
+            top: -15px;
+            right: 25px;
+            font-size: 2.5rem;
+            color: rgba(230, 57, 70, 0.15);
+        }
+
+        .highlight-card {
+            background: rgba(22, 27, 34, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 25px 0;
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            transition: border-color 0.3s ease;
+        }
+
+        .highlight-card:hover {
+            border-color: var(--accent-pink);
+        }
+
+        .highlight-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--accent-glow);
+            color: var(--accent-pink);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            flex-shrink: 0;
+        }
+
+        .callout-box {
+            background: linear-gradient(135deg, rgba(230, 57, 70, 0.1), rgba(12, 16, 23, 0.9));
+            border: 1px dashed var(--accent-pink);
+            border-radius: 12px;
+            padding: 22px;
+            text-align: center;
+            margin-top: 35px;
+        }
+
+        .hashtag {
+            color: #58a6ff;
+            background: rgba(88, 166, 255, 0.1);
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            display: inline-block;
+            margin-right: 8px;
+            margin-top: 8px;
+            transition: background 0.3s ease;
+        }
+
+        .hashtag:hover {
+            background: rgba(88, 166, 255, 0.25);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Header (Only Back to Blog Button) -->
+    <header class="top-header">
+        <div class="container" style="max-width: 850px;">
+            <a href="blog.html" class="back-btn-pill">
+                <i class="fa-solid fa-arrow-left"></i> Back to Blog
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="container my-5 animate-up" style="max-width: 850px;">
+
+        <!-- Category Badge -->
+        <div class="mb-3">
+            <span class="category-badge"><i class="fa-solid fa-heart-pulse me-1"></i> Sexual & Reproductive Health</span>
+        </div>
+
+        <!-- Title -->
+        <h1 class="blog-title mb-3">Seven Days Hide and Seek with My Sister at 9 and Touch Me Not</h1>
+
+        <!-- Author & Date Metadata -->
+        <div class="blog-meta mb-4 pb-3 border-bottom border-secondary">
+            <span><i class="fa-regular fa-user me-1 text-danger"></i> Sagar Parajuli</span> &bull; 
+            <span><i class="fa-regular fa-calendar me-1 text-danger"></i> May 2, 2022</span> &bull; 
+            <span><i class="fa-regular fa-clock me-1 text-danger"></i> 2 min read</span>
+        </div>
+
+        <!-- Subtitle Header -->
+        <h2 class="blog-subtitle">Seven Days Hide and Seek</h2>
+
+        <article class="mt-4">
+            <!-- Animated Quote Card -->
+            <div class="quote-box">
+                <i class="fa-solid fa-quote-right quote-icon"></i>
+                <p class="mb-2 fs-5 fst-italic">"Sister please do come, please it’s over please come. I will give you lollypop. Come out of that Ghost Room."</p>
+                <small class="text-muted">— Small unbroken words of a child spoken at the age of 9</small>
+            </div>
+
+            <p>At the age of nine, I played a Hide and Seek game with my sister for seven days. Have you ever played such a long game of hide and seek?</p>
+
+            <p>During these seven days, my sister hid and I sought her every morning, afternoon, and evening until night fell and I fell asleep unknowingly. Every day, I cried with my parents and brought lollypops for my sister to make her happy to come out of the room. But she didn't for seven straight days.</p>
+
+            <!-- Visual Graphic Highlight Card 1 -->
+            <div class="highlight-card">
+                <div class="highlight-icon">
+                    <i class="fa-solid fa-door-closed"></i>
+                </div>
+                <div>
+                    <h6 class="mb-1 text-white fw-bold">The "Ghost Room" Memory</h6>
+                    <p class="mb-0 text-muted fs-6">A dark, closed space where windows stayed shut, creating confusion and fear for a 9-year-old brother.</p>
+                </div>
+            </div>
+
+            <p>I don’t know how she stayed in that room with closed windows and doors, never coming outside even for the toilet or to drink water. You know, my sister and I used to call that room the "Ghost Room" because of its darkness, even when the windows were open. Now, imagine how my sister remained there with her ghost feeling.</p>
+
+            <p>Sometimes, I used to hear her voice: <em>“Mother, Please come I need you, It is paining.”</em></p>
+
+            <p>At that time, mother usually was out of the house, and I wasn’t allowed to enter. I didn’t know why she was calling; I thought it might be because of the ghost in that room making her feel afraid.</p>
+
+            <p>One day, I heard her voice again: <em>“Mother, Mother, Mother, Please come fast soon fast, it is paining.”</em> Since mother wasn't home, I went into the room. I saw my sister with some red-colored liquid on her leg. I guessed that liquid was a red-colored edible viscous lemon drink.</p>
+
+            <p>I said, <em>“Sister, why are you eating this? Why are you not giving any to me? Are you hungry? Eat my lollypop too.”</em></p>
+
+            <p>Then mother came, scolded my sister, and said many things. I hardly remember what happened after this because I cried so loudly after mother scolded her that I couldn’t hear anything else.</p>
+
+            <p>This Hide and Seek was not the only mystery for me. After this, once a month, my sister used to play a 'Touch Me Not' game. In this game, I wasn’t allowed to touch my sister for four days. These games were never fun during childhood.</p>
+
+            <!-- Visual Graphic Highlight Card 2 -->
+            <div class="highlight-card">
+                <div class="highlight-icon">
+                    <i class="fa-solid fa-hands-holding-circle"></i>
+                </div>
+                <div>
+                    <h6 class="mb-1 text-white fw-bold">Breaking the Silence & Taboo</h6>
+                    <p class="mb-0 text-muted fs-6">Understanding the cultural roots of period isolation and replacing restrictive taboos with care and support.</p>
+                </div>
+            </div>
+
+            <p>Now, today I am 19, and I know why these mysterious long Hide and Seek games and monthly 'Touch Me Not' games were played. It is because of the menstruation taboos existing in Nepalese society, where females are regarded as untouchable during menstruation.</p>
+
+            <p>Today, I don’t follow such taboos in my family. Taboos are created by society, but my sister is mine, and I want to take care of her. No more menstruation taboos in our sister-brother bond.</p>
+
+            <!-- Callout Celebration Box -->
+            <div class="callout-box">
+                <i class="fa-solid fa-ribbon text-danger fs-3 mb-2"></i>
+                <h5 class="fw-bold text-white mb-2">Happy Menstruation Cycle</h5>
+                <p class="mb-0 text-muted">I wish my sister every month and celebrate it with nutritious food for her healthcare and well-being.</p>
+            </div>
+
+            <!-- Hashtag Section -->
+            <div class="mt-4 pt-3 border-top border-secondary">
+                <span class="hashtag">#RespectMenstruationasNaturalProcess</span>
+                <span class="hashtag">#PeriodEmpowermentProject</span>
+            </div>
+        </article>
+    </main>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

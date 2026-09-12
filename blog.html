@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | Sagar Parajuli</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-color: #0c1017;
+            --card-bg: #161b22;
+            --accent-pink: #e63946;
+            --text-color: #ffffff;
+            --muted-color: #a0a6b1;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Category Filter Tabs */
+        .blog-filter {
+            display: flex;
+            gap: 20px;
+            border-bottom: 1px solid #2d3748;
+            padding-bottom: 10px;
+            margin-bottom: 40px;
+        }
+
+        .filter-btn {
+            color: var(--muted-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            color: var(--text-color);
+        }
+
+        /* Blog Card Container */
+        .blog-card {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #000;
+            aspect-ratio: 1 / 1;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+            transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease;
+        }
+
+        /* Hover Elevation Effect */
+        .blog-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 16px 32px rgba(0, 0, 0, 0.6);
+        }
+
+        .blog-card-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease, filter 0.5s ease;
+            filter: brightness(0.88);
+        }
+
+        /* Image Zoom on Hover */
+        .blog-card:hover .blog-card-img {
+            transform: scale(1.08);
+            filter: brightness(0.98);
+        }
+
+        /* Card Overlay Structure */
+        .blog-card-overlay {
+            position: absolute;
+            inset: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.75) 100%);
+            color: #fff;
+        }
+
+        .blog-meta-top {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 500;
+        }
+
+        .blog-category-badge {
+            align-self: flex-start;
+            background-color: var(--accent-pink);
+            color: white;
+            font-size: 0.85rem;
+            padding: 6px 14px;
+            border-radius: 4px;
+            font-weight: 600;
+            margin-top: 10px;
+            letter-spacing: 0.5px;
+            display: inline-block;
+        }
+
+        .blog-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-top: 15px;
+            margin-bottom: 0;
+        }
+
+        .blog-footer-stats {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.85);
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 10px;
+            margin-top: 15px;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .blog-card-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3">
+        <div class="container">
+            <a href="main.html" class="btn custom-btn" style="background: linear-gradient(135deg, var(--accent-gold), var(--accent-warm)); color: #c7ff10; font-weight: 700; border-radius: 30px; padding: 8px 20px; text-decoration: none; transition: transform 0.2s ease, box-shadow 0.2s ease;">
+                        <i class="bi bi-arrow-left me-1"></i> Return to Home
+                    </a>
+            
+            
+        </div>
+    </nav>
+
+    <main class="container my-5 py-3">
+        
+        <div class="blog-filter">
+            <a href="#" class="filter-btn active">All Posts</a>
+            <a href="#" class="filter-btn">Sexual & Reproductive Health</a>
+            <a href="#" class="filter-btn">Travel Blog</a>
+            <a href="#" class="filter-btn">Mental Health</a>
+        </div>
+
+        <div class="row g-4">
+            
+            <div class="col-12 col-md-6 col-lg-5">
+                <a href="blog-details-1.html" class="blog-card-link">
+                    <div class="blog-card">
+                        <img src="images/1.jpeg" alt="Sexual & Reproductive Health" class="blog-card-img">
+                        <div class="blog-card-overlay">
+                            <div>
+                                <div class="blog-meta-top">May 2, 2022 &bull; 2 min read</div>
+                                <span class="blog-category-badge">Sexual & Reproductive...</span>
+                            </div>
+                            <div>
+                                <h3 class="blog-title">seek with..</h3>
+                                <div class="blog-footer-stats">
+                                    <span class="stat-item"><i class="fa-regular fa-eye"></i> 9</span>
+                                    <span class="stat-item"><i class="fa-regular fa-comment"></i> 0</span>
+                                    <span class="stat-item"><i class="fa-regular fa-heart" style="color: #e63946;"></i> 1</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-5">
+                <a href="blog-details-2.html" class="blog-card-link">
+                    <div class="blog-card">
+                        <img src="images/2.jpeg" alt="COVID19 Maskne" class="blog-card-img">
+                        <div class="blog-card-overlay">
+                            <div>
+                                <div class="blog-meta-top">May 2, 2022 &bull; 3 min read</div>
+                                <span class="blog-category-badge">COVID19</span>
+                            </div>
+                            <div>
+                                <h3 class="blog-title">Maskne</h3>
+                                <div class="blog-footer-stats">
+                                    <span class="stat-item"><i class="fa-regular fa-eye"></i> 10</span>
+                                    <span class="stat-item"><i class="fa-regular fa-comment"></i> 0</span>
+                                    <span class="stat-item"><i class="fa-regular fa-heart" style="color: #e63946;"></i> 1</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

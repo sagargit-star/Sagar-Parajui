@@ -1,0 +1,416 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="description" content="Research Publications - Sagar Parajuli">
+        <meta name="author" content="Sagar Parajuli">
+
+        <title>Research Publications - Sagar Parajuli</title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/bootstrap-icons.css" rel="stylesheet">
+        <link href="css/templatemo-tiya-golf-club.css" rel="stylesheet">
+
+        <style>
+            :root {
+                --bg-dark-base: #030712;
+                --bg-card: rgba(15, 23, 42, 0.75);
+                --bg-card-hover: rgba(30, 41, 59, 0.85);
+                --accent-gold: #fce38a;
+                --accent-warm: #f3a152;
+                --text-main: #f8fafc;
+                --text-muted: #cbd5e1;
+                --border-subtle: rgba(252, 227, 138, 0.12);
+            }
+
+            body {
+                background: linear-gradient(180deg, #030712 0%, #070d1e 35%, #0b132b 70%, #030712 100%) !important;
+                background-attachment: fixed !important;
+                color: var(--text-main) !important;
+                font-family: 'DM Sans', sans-serif;
+                overflow-x: hidden;
+            }
+
+            /* Floating Navbar */
+            .navbar {
+                position: fixed !important;
+                top: 0;
+                left: 0;
+                right: 0;
+                z-index: 1030;
+                background: rgba(3, 7, 18, 0.85) !important;
+                backdrop-filter: blur(16px);
+                -webkit-backdrop-filter: blur(16px);
+                border-bottom: 1px solid var(--border-subtle);
+                transition: top 0.4s ease-in-out, background 0.3s ease;
+            }
+
+            .navbar.nav-hidden {
+                top: -90px !important;
+            }
+
+            .navbar-trigger {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 25px;
+                z-index: 1029;
+            }
+
+            .navbar.nav-hidden:hover,
+            .navbar-trigger:hover + .navbar,
+            .navbar:focus-within {
+                top: 0 !important;
+                background: rgba(3, 7, 18, 0.95) !important;
+            }
+
+            .navbar-nav .nav-link {
+                color: var(--text-main) !important;
+                font-weight: 500;
+                transition: color 0.3s ease, transform 0.3s ease;
+            }
+
+            .navbar-nav .nav-link:hover, .navbar-nav .nav-link.active {
+                color: var(--accent-gold) !important;
+                transform: translateY(-2px);
+            }
+
+            /* Header Banner */
+            .page-header-banner {
+                position: relative;
+                padding-top: 150px;
+                padding-bottom: 60px;
+                background: radial-gradient(circle at 50% 10%, #0f172a 0%, #030712 85%) !important;
+                text-align: center;
+            }
+
+            .page-header-banner h1 {
+                font-size: 3rem;
+                font-weight: 700;
+                background: linear-gradient(135deg, #ffffff 0%, var(--accent-gold) 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+
+            .page-header-banner p {
+                color: #cbd5e1 !important;
+            }
+
+            .custom-btn {
+                background: linear-gradient(135deg, var(--accent-gold), var(--accent-warm)) !important;
+                color: #030712 !important;
+                font-weight: 700;
+                border: none !important;
+                border-radius: 30px;
+                padding: 8px 20px;
+                font-size: 0.88rem;
+                box-shadow: 0 4px 15px rgba(243, 161, 82, 0.2);
+                transition: all 0.3s ease !important;
+                display: inline-flex;
+                align-items: center;
+                gap: 6px;
+                text-decoration: none !important;
+            }
+
+            .custom-btn:hover {
+                transform: translateY(-2px) scale(1.02);
+                box-shadow: 0 6px 20px rgba(243, 161, 82, 0.4);
+                color: #000 !important;
+            }
+
+            /* Research Cards */
+            .research-card {
+                background: var(--bg-card);
+                backdrop-filter: blur(12px);
+                -webkit-backdrop-filter: blur(12px);
+                border: 1px solid var(--border-subtle);
+                border-radius: 16px;
+                padding: 28px;
+                margin-bottom: 24px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+                transition: all 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
+                position: relative;
+                overflow: hidden;
+            }
+
+            .research-card::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 4px;
+                height: 100%;
+                background: linear-gradient(180deg, var(--accent-gold), var(--accent-warm));
+                border-radius: 4px 0 0 4px;
+            }
+
+            .research-card:hover {
+                background: var(--bg-card-hover);
+                transform: translateY(-5px);
+                border-color: rgba(252, 227, 138, 0.3);
+                box-shadow: 0 15px 35px rgba(243, 161, 82, 0.12);
+            }
+
+            .research-number {
+                font-size: 0.85rem;
+                font-weight: 700;
+                color: var(--accent-gold);
+                letter-spacing: 1px;
+                text-transform: uppercase;
+                margin-bottom: 8px;
+                display: inline-block;
+            }
+
+            .research-title {
+                font-size: 1.35rem;
+                font-weight: 700;
+                color: #ffffff;
+                margin-bottom: 12px;
+                line-height: 1.4;
+            }
+
+            .journal-badge {
+                background: rgba(252, 227, 138, 0.1);
+                color: var(--accent-gold);
+                font-size: 0.85rem;
+                font-weight: 600;
+                padding: 5px 12px;
+                border-radius: 20px;
+                border: 1px solid rgba(252, 227, 138, 0.2);
+                display: inline-block;
+            }
+
+            /* Footer */
+            .site-footer {
+                background-color: #02040a !important;
+                border-top: 1px solid rgba(255, 255, 255, 0.05);
+            }
+
+            .social-icon-link {
+                background-color: var(--bg-card) !important;
+                color: var(--accent-gold) !important;
+                border: 1px solid var(--border-subtle);
+                transition: all 0.3s ease;
+            }
+
+            .social-icon-link:hover {
+                background-color: var(--accent-gold) !important;
+                color: var(--bg-dark-base) !important;
+                transform: translateY(-4px);
+            }
+        </style>
+    </head>
+    
+    <body>
+        
+        <div class="navbar-trigger"></div>
+
+        <main>
+            <!-- Navigation Bar -->
+            <nav class="navbar navbar-expand-lg">                
+                <div class="container">
+                    <a class="navbar-brand d-inline-flex flex-column align-items-center justify-content-center" href="main.html" style="text-decoration: none; padding: 5px 0;">
+                        <svg width="42" height="48" viewBox="0 0 100 110" xmlns="http://www.w3.org/2000/svg" style="filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.5));">
+                            <defs>
+                                <linearGradient id="sagarLogoGold" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#FCE38A" />
+                                    <stop offset="50%" stop-color="#F3A152" />
+                                    <stop offset="100%" stop-color="#EAA146" />
+                                </linearGradient>
+                            </defs>
+                            <path d="M 80 28 C 80 8, 25 5, 25 36 C 25 70, 85 55, 85 88 C 85 112, 20 110, 15 85 C 22 86, 32 88, 38 78 C 28 65, 12 55, 12 36 C 12 10, 70 -5, 88 18 Z" fill="url(#sagarLogoGold)"/>
+                            <path d="M 30 36 C 30 20, 68 22, 68 36 C 68 55, 25 45, 25 72 C 25 95, 72 95, 72 82 C 60 82, 42 78, 42 66 C 52 52, 70 42, 70 28 Z" fill="url(#sagarLogoGold)" opacity="0.95"/>
+                        </svg>
+                        <span style="color: #FCE38A; font-weight: 700; font-size: 1.1rem; letter-spacing: 1.5px; text-transform: uppercase; margin-top: 2px; font-family: sans-serif;">
+                            Sagar
+                        </span>
+                    </a>
+
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+    
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ms-lg-auto align-items-center">
+                            <li class="nav-item"><a class="nav-link" href="main.html#section_1"><i class="bi bi-house-door me-1"></i> Return Home</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Banner Header -->
+            <section class="page-header-banner">
+                <div class="container">
+                    <span class="journal-badge mb-3"><i class="bi bi-journal-text me-1"></i> Academic Publications</span>
+                    <h1>Research & Publications</h1>
+                    <p class="mx-auto mt-2" style="max-width: 650px; color: #cbd5e1;">
+                        Peer-reviewed articles, epidemiological investigations, and public health policy studies across Nepal.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Research List -->
+            <section class="section-padding py-5">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-10 col-12 mx-auto">
+
+                            <!-- Item 1 -->
+                            <div class="research-card">
+                                <span class="research-number">Publication #01</span>
+                                <h3 class="research-title">Belief and Risk Factors Associated with Suicidal and Self-harm Behaviour among Young Adults of Kathmandu District</h3>
+                                <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mt-3">
+                                    <span class="journal-badge"><i class="bi bi-journal-bookmark me-1"></i> Journal of Nepal Health Research Council</span>
+                                    <a href="https://www.jnhrc.com.np/index.php/jnhrc/article/view/4620" target="_blank" rel="noopener noreferrer" class="btn custom-btn">
+                                        Read Article <i class="bi bi-box-arrow-up-right ms-1"></i>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Item 2 -->
+                            <div class="research-card">
+                                <span class="research-number">Publication #02</span>
+                                <h3 class="research-title">Social Media Disorder (SMD) and its association with Depression and Self-esteem among Adolescents of Kathmandu Metropolitan City; A cross-analytical study</h3>
+                                <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mt-3">
+                                    <span class="journal-badge"><i class="bi bi-journal-bookmark me-1"></i> Journal of Community Medicine and Public Health</span>
+                                    <a href="https://doi.org/10.38207/JCMPHR/2022/NOV030803114" target="_blank" rel="noopener noreferrer" class="btn custom-btn">
+                                        View DOI <i class="bi bi-box-arrow-up-right ms-1"></i>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Item 3 -->
+                            <div class="research-card">
+                                <span class="research-number">Publication #03</span>
+                                <h3 class="research-title">Risk Factors of Breast Cancer among Patients from Lower Middle Income Country: A case control study from Nepal</h3>
+                                <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mt-3">
+                                    <span class="journal-badge"><i class="bi bi-journal-bookmark me-1"></i> J MAR Oncology and Haematology</span>
+                                    <a href="https://www.medicalandresearch.com/current_issue/1883" target="_blank" rel="noopener noreferrer" class="btn custom-btn">
+                                        Read Article <i class="bi bi-box-arrow-up-right ms-1"></i>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Item 4 -->
+                            <div class="research-card">
+                                <span class="research-number">Publication #04</span>
+                                <h3 class="research-title">Stress and Coping Strategies Among Caregivers of Cancer Patients in a Tertiary Care Setting in Nepal</h3>
+                                <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mt-3">
+                                    <span class="journal-badge"><i class="bi bi-journal-bookmark me-1"></i> Health Prospect - Nepal Journals Online</span>
+                                    <a href="https://doi.org/10.3126/hprospect.v23i2.59962" target="_blank" rel="noopener noreferrer" class="btn custom-btn">
+                                        View DOI <i class="bi bi-box-arrow-up-right ms-1"></i>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Item 5 -->
+                            <div class="research-card">
+                                <span class="research-number">Publication #05</span>
+                                <h3 class="research-title">Work motivation and job satisfaction among local government health workers in Chitwan, Nepal: a cross-sectional study</h3>
+                                <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mt-3">
+                                    <span class="journal-badge"><i class="bi bi-journal-bookmark me-1"></i> BMJ Public Health</span>
+                                    <a href="https://doi.org/10.1136/bmjph-2024-001736" target="_blank" rel="noopener noreferrer" class="btn custom-btn">
+                                        View DOI <i class="bi bi-box-arrow-up-right ms-1"></i>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Item 6 -->
+                            <div class="research-card">
+                                <span class="research-number">Publication #06</span>
+                                <h3 class="research-title">Prevalence of Depression and Its Associated Factors Among Patients Undergoing Substance Abuse Treatment at Rehabilitation Centres in Pokhara, Nepal</h3>
+                                <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mt-3">
+                                    <span class="journal-badge"><i class="bi bi-journal-bookmark me-1"></i> Hindawi Mental Illness</span>
+                                    <a href="https://doi.org/10.1155/mij/4778500" target="_blank" rel="noopener noreferrer" class="btn custom-btn">
+                                        View DOI <i class="bi bi-box-arrow-up-right ms-1"></i>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Item 7 -->
+                            <div class="research-card">
+                                <span class="research-number">Publication #07</span>
+                                <h3 class="research-title">Patient and Health System Delays in the diagnosis and treatment of Tuberculosis in Gandaki, Nepal</h3>
+                                <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mt-3">
+                                    <span class="journal-badge"><i class="bi bi-journal-bookmark me-1"></i> PLOS Global Public Health</span>
+                                    <a href="https://doi.org/10.1371/journal.pgph.0004676" target="_blank" rel="noopener noreferrer" class="btn custom-btn">
+                                        View DOI <i class="bi bi-box-arrow-up-right ms-1"></i>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Item 8 -->
+                            <div class="research-card">
+                                <span class="research-number">Publication #08</span>
+                                <h3 class="research-title">Service readiness of primary healthcare facilities for dengue management in Bagmati Province, Nepal: a mixed-method study</h3>
+                                <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mt-3">
+                                    <span class="journal-badge"><i class="bi bi-journal-bookmark me-1"></i> Journal of Public Health (Oxford University Press)</span>
+                                    <a href="https://doi.org/10.1093/pubmed/fdaf079" target="_blank" rel="noopener noreferrer" class="btn custom-btn">
+                                        View DOI <i class="bi bi-box-arrow-up-right ms-1"></i>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Item 9 -->
+                            <div class="research-card">
+                                <span class="research-number">Publication #09</span>
+                                <h3 class="research-title">Awareness and compliance with tobacco control policies among retailers near schools in Arghakhanchi, Nepal: A mixed-methods study</h3>
+                                <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mt-3">
+                                    <span class="journal-badge"><i class="bi bi-journal-bookmark me-1"></i> PLOS Global Public Health</span>
+                                    <a href="https://doi.org/10.1371/journal.pgph.0004780" target="_blank" rel="noopener noreferrer" class="btn custom-btn">
+                                        View DOI <i class="bi bi-box-arrow-up-right ms-1"></i>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Item 10 -->
+                            <div class="research-card">
+                                <span class="research-number">Publication #10</span>
+                                <h3 class="research-title">Adolescent-friendly health services in Nepal: usage and key determinants</h3>
+                                <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mt-3">
+                                    <span class="journal-badge"><i class="bi bi-journal-bookmark me-1"></i> BMC Health Services Research</span>
+                                    <a href="https://doi.org/10.1186/s12913-025-13157-y" target="_blank" rel="noopener noreferrer" class="btn custom-btn">
+                                        View DOI <i class="bi bi-box-arrow-up-right ms-1"></i>
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- JAVASCRIPT FILES -->
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.bundle.min.js"></script>
+        <script src="js/jquery.sticky.js"></script>
+        <script src="js/custom.js"></script>
+
+        <!-- Dynamic Navbar Scroll Script -->
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const navbar = document.querySelector('.navbar');
+
+                function handleNavbarVisibility() {
+                    if (!navbar) return;
+                    if (window.scrollY > 120) {
+                        navbar.classList.add('nav-hidden');
+                    } else {
+                        navbar.classList.remove('nav-hidden');
+                    }
+                }
+
+                window.addEventListener('scroll', handleNavbarVisibility);
+                handleNavbarVisibility();
+            });
+        </script>
+    </body>
+</html>

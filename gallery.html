@@ -1,0 +1,542 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="description" content="Gallery - Sagar Parajuli | Photo Collection">
+        <meta name="author" content="Sagar Parajuli">
+
+        <title>Gallery - Sagar Parajuli</title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/bootstrap-icons.css" rel="stylesheet">
+        <link href="css/templatemo-tiya-golf-club.css" rel="stylesheet">
+
+        <style>
+            :root {
+                --bg-dark-base: #030712;
+                --bg-card: rgba(15, 23, 42, 0.75);
+                --bg-card-hover: rgba(30, 41, 59, 0.85);
+                --accent-gold: #fce38a;
+                --accent-warm: #f3a152;
+                --text-main: #f8fafc;
+                --text-muted: #cbd5e1;
+                --border-subtle: rgba(252, 227, 138, 0.12);
+            }
+
+            body {
+                background: linear-gradient(180deg, #030712 0%, #070d1e 35%, #0b132b 70%, #030712 100%) !important;
+                background-attachment: fixed !important;
+                color: var(--text-main) !important;
+                font-family: 'DM Sans', sans-serif;
+                overflow-x: hidden;
+            }
+
+            /* Floating Navbar */
+            .navbar {
+                position: fixed !important;
+                top: 0;
+                left: 0;
+                right: 0;
+                z-index: 1030;
+                background: rgba(3, 7, 18, 0.85) !important;
+                backdrop-filter: blur(16px);
+                -webkit-backdrop-filter: blur(16px);
+                border-bottom: 1px solid var(--border-subtle);
+                transition: top 0.4s ease-in-out, background 0.3s ease;
+            }
+
+            .navbar.nav-hidden {
+                top: -90px !important;
+            }
+
+            .navbar-trigger {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 25px;
+                z-index: 1029;
+            }
+
+            .navbar.nav-hidden:hover,
+            .navbar-trigger:hover + .navbar,
+            .navbar:focus-within {
+                top: 0 !important;
+                background: rgba(3, 7, 18, 0.95) !important;
+            }
+
+            .navbar-nav .nav-link {
+                color: var(--text-main) !important;
+                font-weight: 500;
+                transition: color 0.3s ease, transform 0.3s ease;
+            }
+
+            .navbar-nav .nav-link:hover, .navbar-nav .nav-link.active {
+                color: var(--accent-gold) !important;
+                transform: translateY(-2px);
+            }
+
+            /* Header Banner */
+            .page-header-banner {
+                position: relative;
+                padding-top: 150px;
+                padding-bottom: 40px;
+                background: radial-gradient(circle at 50% 10%, #0f172a 0%, #030712 85%) !important;
+                text-align: center;
+            }
+
+            .page-header-banner h1 {
+                font-size: 3rem;
+                font-weight: 700;
+                background: linear-gradient(135deg, #ffffff 0%, var(--accent-gold) 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+
+            .gallery-badge {
+                background: rgba(252, 227, 138, 0.1);
+                color: var(--accent-gold);
+                font-size: 0.85rem;
+                font-weight: 600;
+                padding: 6px 16px;
+                border-radius: 20px;
+                border: 1px solid rgba(252, 227, 138, 0.2);
+                display: inline-block;
+                margin-bottom: 15px;
+            }
+
+            /* Filter Buttons */
+            .filter-btn-group {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 10px;
+                margin-bottom: 35px;
+            }
+
+            .filter-btn {
+                background: rgba(15, 23, 42, 0.6);
+                border: 1px solid var(--border-subtle);
+                color: var(--text-muted);
+                padding: 8px 20px;
+                border-radius: 30px;
+                font-size: 0.88rem;
+                font-weight: 500;
+                transition: all 0.3s ease;
+                cursor: pointer;
+            }
+
+            .filter-btn:hover, .filter-btn.active {
+                background: linear-gradient(135deg, var(--accent-gold), var(--accent-warm));
+                color: #030712;
+                font-weight: 700;
+                border-color: transparent;
+                box-shadow: 0 4px 15px rgba(243, 161, 82, 0.3);
+                transform: translateY(-2px);
+            }
+
+            /* Gallery Grid & Cards */
+            .gallery-item {
+                transition: transform 0.4s ease, opacity 0.4s ease;
+            }
+
+            .gallery-card {
+                position: relative;
+                border-radius: 16px;
+                overflow: hidden;
+                background: var(--bg-card);
+                border: 1px solid var(--border-subtle);
+                box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+                cursor: pointer;
+            }
+
+            .gallery-card-inner {
+                position: relative;
+                width: 100%;
+                padding-top: 80%; /* Aspect ratio */
+                overflow: hidden;
+            }
+
+            .gallery-img {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            }
+
+            .gallery-card:hover .gallery-img {
+                transform: scale(1.12);
+            }
+
+            /* Eyecatchy Hover Overlay */
+            .gallery-overlay {
+                position: absolute;
+                inset: 0;
+                background: radial-gradient(circle at center, rgba(3, 7, 18, 0.2) 0%, rgba(3, 7, 18, 0.75) 100%);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                opacity: 0;
+                transition: opacity 0.35s ease;
+            }
+
+            .gallery-card:hover .gallery-overlay {
+                opacity: 1;
+            }
+
+            .zoom-icon {
+                width: 48px;
+                height: 48px;
+                background: rgba(252, 227, 138, 0.25);
+                border: 1px solid var(--accent-gold);
+                color: var(--accent-gold);
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1.3rem;
+                backdrop-filter: blur(4px);
+                transform: scale(0.7);
+                transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            }
+
+            .gallery-card:hover .zoom-icon {
+                transform: scale(1);
+            }
+
+            /* Outer Glow Border on Hover */
+            .gallery-card::after {
+                content: '';
+                position: absolute;
+                inset: 0;
+                border-radius: 16px;
+                border: 2px solid transparent;
+                transition: border-color 0.3s ease, box-shadow 0.3s ease;
+                pointer-events: none;
+            }
+
+            .gallery-card:hover::after {
+                border-color: rgba(252, 227, 138, 0.6);
+                box-shadow: inset 0 0 15px rgba(252, 227, 138, 0.25);
+            }
+
+            /* Lightbox Modal */
+            .lightbox-modal .modal-content {
+                background: rgba(3, 7, 18, 0.95);
+                border: 1px solid var(--border-subtle);
+                backdrop-filter: blur(20px);
+                border-radius: 20px;
+            }
+
+            .lightbox-modal img {
+                border-radius: 12px;
+                max-height: 82vh;
+                object-fit: contain;
+                width: 100%;
+            }
+
+            /* Footer */
+            .site-footer {
+                background-color: #02040a !important;
+                border-top: 1px solid rgba(255, 255, 255, 0.05);
+            }
+
+            .social-icon-link {
+                background-color: var(--bg-card) !important;
+                color: var(--accent-gold) !important;
+                border: 1px solid var(--border-subtle);
+                transition: all 0.3s ease;
+            }
+
+            .social-icon-link:hover {
+                background-color: var(--accent-gold) !important;
+                color: var(--bg-dark-base) !important;
+                transform: translateY(-4px);
+            }
+        </style>
+    </head>
+    
+    <body>
+        <div class="navbar-trigger"></div>
+
+        <main>
+            <!-- Navigation Bar -->
+            <nav class="navbar navbar-expand-lg">                
+                <div class="container">
+                    <a class="navbar-brand d-inline-flex flex-column align-items-center justify-content-center" href="main.html" style="text-decoration: none; padding: 5px 0;">
+                        <svg width="42" height="48" viewBox="0 0 100 110" xmlns="http://www.w3.org/2000/svg" style="filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.5));">
+                            <defs>
+                                <linearGradient id="sagarLogoGold" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#FCE38A" />
+                                    <stop offset="50%" stop-color="#F3A152" />
+                                    <stop offset="100%" stop-color="#EAA146" />
+                                </linearGradient>
+                            </defs>
+                            <path d="M 80 28 C 80 8, 25 5, 25 36 C 25 70, 85 55, 85 88 C 85 112, 20 110, 15 85 C 22 86, 32 88, 38 78 C 28 65, 12 55, 12 36 C 12 10, 70 -5, 88 18 Z" fill="url(#sagarLogoGold)"/>
+                            <path d="M 30 36 C 30 20, 68 22, 68 36 C 68 55, 25 45, 25 72 C 25 95, 72 95, 72 82 C 60 82, 42 78, 42 66 C 52 52, 70 42, 70 28 Z" fill="url(#sagarLogoGold)" opacity="0.95"/>
+                        </svg>
+                        <span style="color: #FCE38A; font-weight: 700; font-size: 1.1rem; letter-spacing: 1.5px; text-transform: uppercase; margin-top: 2px; font-family: sans-serif;">
+                            Sagar
+                        </span>
+                    </a>
+
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+    
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ms-lg-auto">
+                            <li class="nav-item"><a class="nav-link" href="main.html"><i class="bi bi-house-door me-1"></i> Home</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Banner Header -->
+            <section class="page-header-banner">
+                <div class="container">
+                    <span class="gallery-badge"><i class="bi bi-images me-1"></i> Visual Gallery</span>
+                    <h1>Photo Gallery</h1>
+                </div>
+            </section>
+
+            <!-- Gallery Section -->
+            <section class="section-padding py-4">
+                <div class="container">
+
+                    <!-- Category Filter Buttons -->
+                    <div class="filter-btn-group">
+                        <button class="filter-btn active" data-filter="all">All Photos</button>
+                        <button class="filter-btn" data-filter="advocacy">Advocacy & Workshops</button>
+                        <button class="filter-btn" data-filter="field">Field Work</button>
+                        <button class="filter-btn" data-filter="events">Events & Seminars</button>
+                    </div>
+
+                    <!-- Photo Grid -->
+                    <div class="row g-3 g-md-4" id="galleryGrid">
+
+                        <!-- Photo 1 -->
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-12 gallery-item" data-category="advocacy">
+                            <div class="gallery-card" onclick="openLightbox('images/gallery/photo1.jpg')">
+                                <div class="gallery-card-inner">
+                                    <img src="images/gallery/photo1.jpg" alt="Gallery Image" class="gallery-img" onerror="this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80'">
+                                </div>
+                                <div class="gallery-overlay">
+                                    <div class="zoom-icon"><i class="bi bi-arrows-angle-expand"></i></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Photo 2 -->
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-12 gallery-item" data-category="events">
+                            <div class="gallery-card" onclick="openLightbox('images/gallery/photo2.jpg')">
+                                <div class="gallery-card-inner">
+                                    <img src="images/gallery/photo2.jpg" alt="Gallery Image" class="gallery-img" onerror="this.src='https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=600&q=80'">
+                                </div>
+                                <div class="gallery-overlay">
+                                    <div class="zoom-icon"><i class="bi bi-arrows-angle-expand"></i></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Photo 3 -->
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-12 gallery-item" data-category="field">
+                            <div class="gallery-card" onclick="openLightbox('images/gallery/photo3.jpg')">
+                                <div class="gallery-card-inner">
+                                    <img src="images/gallery/photo3.jpg" alt="Gallery Image" class="gallery-img" onerror="this.src='https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?auto=format&fit=crop&w=600&q=80'">
+                                </div>
+                                <div class="gallery-overlay">
+                                    <div class="zoom-icon"><i class="bi bi-arrows-angle-expand"></i></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Photo 4 -->
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-12 gallery-item" data-category="advocacy">
+                            <div class="gallery-card" onclick="openLightbox('images/gallery/photo4.jpg')">
+                                <div class="gallery-card-inner">
+                                    <img src="images/gallery/photo4.jpg" alt="Gallery Image" class="gallery-img" onerror="this.src='https://images.unsplash.com/photo-1577495508048-b635879837f1?auto=format&fit=crop&w=600&q=80'">
+                                </div>
+                                <div class="gallery-overlay">
+                                    <div class="zoom-icon"><i class="bi bi-arrows-angle-expand"></i></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Photo 5 -->
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-12 gallery-item" data-category="events">
+                            <div class="gallery-card" onclick="openLightbox('images/gallery/photo5.jpg')">
+                                <div class="gallery-card-inner">
+                                    <img src="images/gallery/photo5.jpg" alt="Gallery Image" class="gallery-img" onerror="this.src='https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=600&q=80'">
+                                </div>
+                                <div class="gallery-overlay">
+                                    <div class="zoom-icon"><i class="bi bi-arrows-angle-expand"></i></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Photo 6 -->
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-12 gallery-item" data-category="field">
+                            <div class="gallery-card" onclick="openLightbox('images/gallery/photo6.jpg')">
+                                <div class="gallery-card-inner">
+                                    <img src="images/gallery/photo6.jpg" alt="Gallery Image" class="gallery-img" onerror="this.src='https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=600&q=80'">
+                                </div>
+                                <div class="gallery-overlay">
+                                    <div class="zoom-icon"><i class="bi bi-arrows-angle-expand"></i></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Photo 7 -->
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-12 gallery-item" data-category="advocacy">
+                            <div class="gallery-card" onclick="openLightbox('images/gallery/photo7.jpg')">
+                                <div class="gallery-card-inner">
+                                    <img src="images/gallery/photo7.jpg" alt="Gallery Image" class="gallery-img" onerror="this.src='https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=600&q=80'">
+                                </div>
+                                <div class="gallery-overlay">
+                                    <div class="zoom-icon"><i class="bi bi-arrows-angle-expand"></i></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Photo 8 -->
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-12 gallery-item" data-category="events">
+                            <div class="gallery-card" onclick="openLightbox('images/gallery/photo8.jpg')">
+                                <div class="gallery-card-inner">
+                                    <img src="images/gallery/photo8.jpg" alt="Gallery Image" class="gallery-img" onerror="this.src='https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=600&q=80'">
+                                </div>
+                                <div class="gallery-overlay">
+                                    <div class="zoom-icon"><i class="bi bi-arrows-angle-expand"></i></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Photo 9 -->
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-12 gallery-item" data-category="field">
+                            <div class="gallery-card" onclick="openLightbox('images/gallery/photo9.jpg')">
+                                <div class="gallery-card-inner">
+                                    <img src="images/gallery/photo9.jpg" alt="Gallery Image" class="gallery-img" onerror="this.src='https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=600&q=80'">
+                                </div>
+                                <div class="gallery-overlay">
+                                    <div class="zoom-icon"><i class="bi bi-arrows-angle-expand"></i></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Photo 10 -->
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-12 gallery-item" data-category="advocacy">
+                            <div class="gallery-card" onclick="openLightbox('images/gallery/photo10.jpg')">
+                                <div class="gallery-card-inner">
+                                    <img src="images/gallery/photo10.jpg" alt="Gallery Image" class="gallery-img" onerror="this.src='https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=600&q=80'">
+                                </div>
+                                <div class="gallery-overlay">
+                                    <div class="zoom-icon"><i class="bi bi-arrows-angle-expand"></i></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Photo 11 -->
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-12 gallery-item" data-category="events">
+                            <div class="gallery-card" onclick="openLightbox('images/gallery/photo11.jpg')">
+                                <div class="gallery-card-inner">
+                                    <img src="images/gallery/photo11.jpg" alt="Gallery Image" class="gallery-img" onerror="this.src='https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=600&q=80'">
+                                </div>
+                                <div class="gallery-overlay">
+                                    <div class="zoom-icon"><i class="bi bi-arrows-angle-expand"></i></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Photo 12 -->
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-12 gallery-item" data-category="field">
+                            <div class="gallery-card" onclick="openLightbox('images/gallery/photo12.jpg')">
+                                <div class="gallery-card-inner">
+                                    <img src="images/gallery/photo12.jpg" alt="Gallery Image" class="gallery-img" onerror="this.src='https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=600&q=80'">
+                                </div>
+                                <div class="gallery-overlay">
+                                    <div class="zoom-icon"><i class="bi bi-arrows-angle-expand"></i></div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Lightbox Modal -->
+        <div class="modal fade lightbox-modal" id="lightboxModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content text-white p-2">
+                    <div class="modal-header border-0 pb-0">
+                        <button type="button" class="btn-close btn-close-white ms-auto" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body text-center pt-2">
+                        <img id="lightboxImg" src="" alt="Enlarged gallery photo">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- JAVASCRIPT FILES -->
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.bundle.min.js"></script>
+        <script src="js/jquery.sticky.js"></script>
+        <script src="js/custom.js"></script>
+
+        <!-- Navbar Scroll & Gallery Filter / Lightbox Logic -->
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                // Navbar Hide on Scroll
+                const navbar = document.querySelector('.navbar');
+                function handleNavbarVisibility() {
+                    if (!navbar) return;
+                    if (window.scrollY > 120) {
+                        navbar.classList.add('nav-hidden');
+                    } else {
+                        navbar.classList.remove('nav-hidden');
+                    }
+                }
+                window.addEventListener('scroll', handleNavbarVisibility);
+                handleNavbarVisibility();
+
+                // Category Filtering
+                const filterBtns = document.querySelectorAll('.filter-btn');
+                const galleryItems = document.querySelectorAll('.gallery-item');
+
+                filterBtns.forEach(btn => {
+                    btn.addEventListener('click', function () {
+                        filterBtns.forEach(b => b.classList.remove('active'));
+                        this.classList.add('active');
+
+                        const filterValue = this.getAttribute('data-filter');
+
+                        galleryItems.forEach(item => {
+                            if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                                item.style.display = 'block';
+                            } else {
+                                item.style.display = 'none';
+                            }
+                        });
+                    });
+                });
+            });
+
+            // Open Lightbox Function
+            function openLightbox(imgSrc) {
+                document.getElementById('lightboxImg').src = imgSrc;
+                const modal = new bootstrap.Modal(document.getElementById('lightboxModal'));
+                modal.show();
+            }
+        </script>
+    </body>
+</html>

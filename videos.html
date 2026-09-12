@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Videos & Documentaries | Sagar Parajuli</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-color: #0c1017;
+            --card-bg: #1c212b;
+            --accent-pink: #e63946;
+            --accent-glow: rgba(230, 57, 70, 0.25);
+            --text-main: #f0f6fc;
+            --text-sub: #c9d1d9;
+            --border-color: #30363d;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* Top Navigation Header */
+        .top-header {
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border-color);
+            background: rgba(12, 16, 23, 0.85);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .back-btn-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-main);
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 8px 18px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .back-btn-pill:hover {
+            color: #ffffff;
+            background: var(--accent-pink);
+            border-color: var(--accent-pink);
+            transform: translateX(-5px);
+            box-shadow: 0 4px 15px var(--accent-glow);
+        }
+
+        /* Page Load Animation */
+        .animate-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Video Card Styling */
+        .video-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            overflow: hidden;
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .video-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--accent-pink);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+        }
+
+        .thumbnail-wrapper {
+            position: relative;
+            overflow: hidden;
+            display: block;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background-color: #000;
+        }
+
+        .thumbnail-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .video-card:hover .thumbnail-wrapper img {
+            transform: scale(1.05);
+        }
+
+        .play-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(12, 16, 23, 0.35);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s ease;
+        }
+
+        .video-card:hover .play-overlay {
+            background: rgba(230, 57, 70, 0.25);
+        }
+
+        .play-btn {
+            width: 50px;
+            height: 50px;
+            background: var(--accent-pink);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 15px var(--accent-glow);
+            transition: transform 0.3s ease;
+        }
+
+        .video-card:hover .play-btn {
+            transform: scale(1.15);
+        }
+
+        /* Modal Customization */
+        .modal-content {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+        }
+
+        .btn-close-white {
+            filter: invert(1) grayscale(100%) brightness(200%);
+        }
+    </style>
+</head>
+<body>
+
+    <header class="top-header">
+        <div class="container" style="max-width: 1100px;">
+            <a href="main.html" class="back-btn-pill">
+                <i class="fa-solid fa-arrow-left"></i> Back to Home
+            </a>
+        </div>
+    </header>
+
+    <main class="container my-5 animate-up" style="max-width: 1100px;">
+        <div class="mb-4">
+            <h1 class="fw-bold text-white mb-2">Videos & Documentaries</h1>
+            <p class="text-secondary">Watch featured discussions, awareness campaigns, and public health videos.</p>
+        </div>
+
+        <div class="row g-4">
+            
+            <div class="col-md-6 col-lg-4">
+                <div class="video-card" onclick="openVideoModal('viNhyhVf1iM')">
+                    <div class="thumbnail-wrapper">
+                        <img src="https://img.youtube.com/vi/viNhyhVf1iM/hqdefault.jpg" onerror="this.onerror=null; this.src='https://img.youtube.com/vi/viNhyhVf1iM/mqdefault.jpg';" alt="Video Thumbnail">
+                        <div class="play-overlay"><div class="play-btn"><i class="fa-solid fa-play ms-1"></i></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="video-card" onclick="openVideoModal('K4Jw2r0OJII')">
+                    <div class="thumbnail-wrapper">
+                        <img src="https://img.youtube.com/vi/K4Jw2r0OJII/hqdefault.jpg" onerror="this.onerror=null; this.src='https://img.youtube.com/vi/K4Jw2r0OJII/mqdefault.jpg';" alt="Video Thumbnail">
+                        <div class="play-overlay"><div class="play-btn"><i class="fa-solid fa-play ms-1"></i></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="video-card" onclick="openVideoModal('Qu_RZvg_jwE')">
+                    <div class="thumbnail-wrapper">
+                        <img src="https://img.youtube.com/vi/Qu_RZvg_jwE/hqdefault.jpg" onerror="this.onerror=null; this.src='https://img.youtube.com/vi/Qu_RZvg_jwE/mqdefault.jpg';" alt="Video Thumbnail">
+                        <div class="play-overlay"><div class="play-btn"><i class="fa-solid fa-play ms-1"></i></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="video-card" onclick="openVideoModal('zBBSkqhNJIo')">
+                    <div class="thumbnail-wrapper">
+                        <img src="https://img.youtube.com/vi/zBBSkqhNJIo/hqdefault.jpg" onerror="this.onerror=null; this.src='https://img.youtube.com/vi/zBBSkqhNJIo/mqdefault.jpg';" alt="Video Thumbnail">
+                        <div class="play-overlay"><div class="play-btn"><i class="fa-solid fa-play ms-1"></i></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="video-card" onclick="openVideoModal('Qu2m1MFDYW8')">
+                    <div class="thumbnail-wrapper">
+                        <img src="https://img.youtube.com/vi/Qu2m1MFDYW8/hqdefault.jpg" onerror="this.onerror=null; this.src='https://img.youtube.com/vi/Qu2m1MFDYW8/mqdefault.jpg';" alt="Video Thumbnail">
+                        <div class="play-overlay"><div class="play-btn"><i class="fa-solid fa-play ms-1"></i></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="video-card" onclick="openVideoModal('Bqc21uspUcI')">
+                    <div class="thumbnail-wrapper">
+                        <img src="https://img.youtube.com/vi/Bqc21uspUcI/hqdefault.jpg" onerror="this.onerror=null; this.src='https://img.youtube.com/vi/Bqc21uspUcI/mqdefault.jpg';" alt="Video Thumbnail">
+                        <div class="play-overlay"><div class="play-btn"><i class="fa-solid fa-play ms-1"></i></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="video-card" onclick="openVideoModal('vGGxTOF15Lw')">
+                    <div class="thumbnail-wrapper">
+                        <img src="https://img.youtube.com/vi/vGGxTOF15Lw/hqdefault.jpg" onerror="this.onerror=null; this.src='https://img.youtube.com/vi/vGGxTOF15Lw/mqdefault.jpg';" alt="Video Thumbnail">
+                        <div class="play-overlay"><div class="play-btn"><i class="fa-solid fa-play ms-1"></i></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="video-card" onclick="openVideoModal('Y0Hf-bVjPws')">
+                    <div class="thumbnail-wrapper">
+                        <img src="https://img.youtube.com/vi/Y0Hf-bVjPws/hqdefault.jpg" onerror="this.onerror=null; this.src='https://img.youtube.com/vi/Y0Hf-bVjPws/mqdefault.jpg';" alt="Video Thumbnail">
+                        <div class="play-overlay"><div class="play-btn"><i class="fa-solid fa-play ms-1"></i></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="video-card" onclick="openVideoModal('fqpAxw8QFU8')">
+                    <div class="thumbnail-wrapper">
+                        <img src="https://img.youtube.com/vi/fqpAxw8QFU8/hqdefault.jpg" onerror="this.onerror=null; this.src='https://img.youtube.com/vi/fqpAxw8QFU8/mqdefault.jpg';" alt="Video Thumbnail">
+                        <div class="play-overlay"><div class="play-btn"><i class="fa-solid fa-play ms-1"></i></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="video-card" onclick="openVideoModal('0olhUPkrOhg')">
+                    <div class="thumbnail-wrapper">
+                        <img src="https://img.youtube.com/vi/0olhUPkrOhg/hqdefault.jpg" onerror="this.onerror=null; this.src='https://img.youtube.com/vi/0olhUPkrOhg/mqdefault.jpg';" alt="Video Thumbnail">
+                        <div class="play-overlay"><div class="play-btn"><i class="fa-solid fa-play ms-1"></i></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="video-card" onclick="openVideoModal('euS8LVw60G8')">
+                    <div class="thumbnail-wrapper">
+                        <img src="https://img.youtube.com/vi/euS8LVw60G8/hqdefault.jpg" onerror="this.onerror=null; this.src='https://img.youtube.com/vi/euS8LVw60G8/mqdefault.jpg';" alt="Video Thumbnail">
+                        <div class="play-overlay"><div class="play-btn"><i class="fa-solid fa-play ms-1"></i></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="video-card" onclick="openVideoModal('vio07zxdkoA')">
+                    <div class="thumbnail-wrapper">
+                        <img src="https://img.youtube.com/vi/vio07zxdkoA/hqdefault.jpg" onerror="this.onerror=null; this.src='https://img.youtube.com/vi/vio07zxdkoA/mqdefault.jpg';" alt="Video Thumbnail">
+                        <div class="play-overlay"><div class="play-btn"><i class="fa-solid fa-play ms-1"></i></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="video-card" onclick="openVideoModal('Kf28utOkn1Q')">
+                    <div class="thumbnail-wrapper">
+                        <img src="https://img.youtube.com/vi/Kf28utOkn1Q/hqdefault.jpg" onerror="this.onerror=null; this.src='https://img.youtube.com/vi/Kf28utOkn1Q/mqdefault.jpg';" alt="Video Thumbnail">
+                        <div class="play-overlay"><div class="play-btn"><i class="fa-solid fa-play ms-1"></i></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="video-card" onclick="openVideoModal('HUSy1UBmfzc')">
+                    <div class="thumbnail-wrapper">
+                        <img src="https://img.youtube.com/vi/HUSy1UBmfzc/hqdefault.jpg" onerror="this.onerror=null; this.src='https://img.youtube.com/vi/HUSy1UBmfzc/mqdefault.jpg';" alt="Video Thumbnail">
+                        <div class="play-overlay"><div class="play-btn"><i class="fa-solid fa-play ms-1"></i></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="video-card" onclick="openVideoModal('LLuMj9qq2GQ')">
+                    <div class="thumbnail-wrapper">
+                        <img src="https://img.youtube.com/vi/LLuMj9qq2GQ/hqdefault.jpg" onerror="this.onerror=null; this.src='https://img.youtube.com/vi/LLuMj9qq2GQ/mqdefault.jpg';" alt="Video Thumbnail">
+                        <div class="play-overlay"><div class="play-btn"><i class="fa-solid fa-play ms-1"></i></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="video-card" onclick="openVideoModal('ZzyZUa-A2eY')">
+                    <div class="thumbnail-wrapper">
+                        <img src="https://img.youtube.com/vi/ZzyZUa-A2eY/hqdefault.jpg" onerror="this.onerror=null; this.src='https://img.youtube.com/vi/ZzyZUa-A2eY/mqdefault.jpg';" alt="Video Thumbnail">
+                        <div class="play-overlay"><div class="play-btn"><i class="fa-solid fa-play ms-1"></i></div></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <div class="modal fade" id="videoModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header border-0 pb-0">
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close" onclick="stopVideo()"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <div class="ratio ratio-16x9 rounded overflow-hidden">
+                        <iframe id="videoPlayer" src="" title="YouTube Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        let videoModalInstance = null;
+        const videoPlayer = document.getElementById('videoPlayer');
+        const modalElement = document.getElementById('videoModal');
+
+        document.addEventListener('DOMContentLoaded', function() {
+            videoModalInstance = new bootstrap.Modal(modalElement);
+
+            modalElement.addEventListener('hidden.bs.modal', function () {
+                stopVideo();
+            });
+        });
+
+        function openVideoModal(videoId) {
+            if (!videoModalInstance) {
+                videoModalInstance = new bootstrap.Modal(modalElement);
+            }
+            // Uses no-cookie embed URL to prevent Error 153 and cookie restrictions
+            videoPlayer.src = "https://www.youtube-nocookie.com/embed/" + videoId + "?autoplay=1&rel=0";
+            videoModalInstance.show();
+        }
+
+        function stopVideo() {
+            if (videoPlayer) {
+                videoPlayer.src = "";
+            }
+        }
+    </script>
+</body>
+</html>

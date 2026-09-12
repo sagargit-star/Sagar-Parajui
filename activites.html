@@ -1,0 +1,453 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="description" content="Activities & Impact Stories - Sagar Parajuli">
+        <meta name="author" content="Sagar Parajuli">
+
+        <title>Activities & Impact - Sagar Parajuli</title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/bootstrap-icons.css" rel="stylesheet">
+        <link href="css/templatemo-tiya-golf-club.css" rel="stylesheet">
+
+        <style>
+            :root {
+                --bg-dark-base: #030712;
+                --bg-card: rgba(15, 23, 42, 0.75);
+                --bg-card-hover: rgba(30, 41, 59, 0.85);
+                --accent-gold: #fce38a;
+                --accent-warm: #f3a152;
+                --accent-glow: rgba(252, 227, 138, 0.35);
+                --text-main: #f8fafc;
+                --text-muted: #94a3b8;
+                --border-subtle: rgba(252, 227, 138, 0.12);
+            }
+
+            body {
+                background: linear-gradient(180deg, #030712 0%, #070d1e 35%, #0b132b 70%, #030712 100%) !important;
+                background-attachment: fixed !important;
+                color: var(--text-main) !important;
+                font-family: 'DM Sans', sans-serif;
+                overflow-x: hidden;
+            }
+
+            /* Floating Navbar */
+            .navbar {
+                position: fixed !important;
+                top: 0;
+                left: 0;
+                right: 0;
+                z-index: 1030;
+                background: rgba(3, 7, 18, 0.85) !important;
+                backdrop-filter: blur(16px);
+                -webkit-backdrop-filter: blur(16px);
+                border-bottom: 1px solid var(--border-subtle);
+                transition: top 0.4s ease-in-out, background 0.3s ease;
+            }
+
+            .navbar.nav-hidden {
+                top: -90px !important;
+            }
+
+            .navbar-trigger {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 25px;
+                z-index: 1029;
+            }
+
+            .navbar.nav-hidden:hover,
+            .navbar-trigger:hover + .navbar,
+            .navbar:focus-within {
+                top: 0 !important;
+                background: rgba(3, 7, 18, 0.95) !important;
+            }
+
+            .navbar-nav .nav-link {
+                color: var(--text-main) !important;
+                font-weight: 500;
+                transition: color 0.3s ease, transform 0.3s ease;
+            }
+
+            .navbar-nav .nav-link:hover, .navbar-nav .nav-link.active {
+                color: var(--accent-gold) !important;
+                transform: translateY(-2px);
+            }
+
+            /* Page Header Banner */
+            .page-header-banner {
+                position: relative;
+                padding-top: 150px;
+                padding-bottom: 70px;
+                background: radial-gradient(circle at 50% 10%, #0f172a 0%, #030712 85%) !important;
+                text-align: center;
+            }
+
+            .page-header-banner h1 {
+                font-size: 3rem;
+                font-weight: 700;
+                background: linear-gradient(135deg, #ffffff 0%, var(--accent-gold) 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+
+            .custom-btn {
+                background: linear-gradient(135deg, var(--accent-gold), var(--accent-warm)) !important;
+                color: #030712 !important;
+                font-weight: 700;
+                border: none !important;
+                border-radius: 30px;
+                padding: 10px 24px;
+                box-shadow: 0 4px 20px rgba(243, 161, 82, 0.25);
+                transition: all 0.3s ease !important;
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                text-decoration: none;
+            }
+
+            .custom-btn:hover {
+                transform: translateY(-2px) scale(1.02);
+                box-shadow: 0 8px 25px rgba(243, 161, 82, 0.45);
+                color: #000 !important;
+            }
+
+            /* Glassmorphism Activity Cards */
+            .activity-card {
+                background: var(--bg-card);
+                backdrop-filter: blur(12px);
+                -webkit-backdrop-filter: blur(12px);
+                border: 1px solid var(--border-subtle);
+                border-radius: 20px;
+                padding: 35px;
+                margin-bottom: 40px;
+                box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+                transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+                position: relative;
+                overflow: hidden;
+            }
+
+            .activity-card::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 4px;
+                height: 100%;
+                background: linear-gradient(180deg, var(--accent-gold), var(--accent-warm));
+                border-radius: 4px 0 0 4px;
+            }
+
+            .activity-card:hover {
+                background: var(--bg-card-hover);
+                transform: translateY(-6px);
+                border-color: rgba(252, 227, 138, 0.3);
+                box-shadow: 0 20px 45px rgba(243, 161, 82, 0.15);
+            }
+
+            .activity-badge {
+                background: rgba(252, 227, 138, 0.12);
+                color: var(--accent-gold);
+                font-size: 0.85rem;
+                font-weight: 600;
+                padding: 6px 14px;
+                border-radius: 20px;
+                border: 1px solid rgba(252, 227, 138, 0.25);
+                display: inline-block;
+                margin-bottom: 15px;
+            }
+
+            .activity-title {
+                font-size: 1.8rem;
+                font-weight: 700;
+                color: #ffffff;
+                margin-bottom: 15px;
+                line-height: 1.3;
+            }
+
+            .activity-meta {
+                font-size: 0.9rem;
+                color: var(--text-muted);
+                margin-bottom: 20px;
+                display: flex;
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+
+            .activity-meta span {
+                display: flex;
+                align-items: center;
+                gap: 6px;
+            }
+
+            .activity-meta i {
+                color: var(--accent-gold);
+            }
+
+            /* Animated Counter Stat Box */
+            .stat-box {
+                background: rgba(3, 7, 18, 0.6);
+                border: 1px solid rgba(252, 227, 138, 0.15);
+                border-radius: 12px;
+                padding: 15px 20px;
+                text-align: center;
+                transition: transform 0.3s ease;
+            }
+
+            .stat-box:hover {
+                transform: scale(1.03);
+                border-color: var(--accent-gold);
+            }
+
+            .stat-number {
+                font-size: 1.5rem;
+                font-weight: 700;
+                color: var(--accent-gold);
+                display: block;
+            }
+
+            .stat-label {
+                font-size: 0.8rem;
+                color: var(--text-muted);
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+            }
+
+            /* Embedded Video Container */
+            .video-wrapper {
+                position: relative;
+                padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+                height: 0;
+                overflow: hidden;
+                border-radius: 16px;
+                border: 1px solid var(--border-subtle);
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            }
+
+            .video-wrapper iframe {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                border: 0;
+            }
+
+            .quote-block {
+                background: rgba(243, 161, 82, 0.08);
+                border-left: 3px solid var(--accent-warm);
+                padding: 15px 20px;
+                border-radius: 0 12px 12px 0;
+                margin: 20px 0;
+                font-style: italic;
+                color: #e2e8f0;
+            }
+
+            /* Footer */
+            .site-footer {
+                background-color: #02040a !important;
+                border-top: 1px solid rgba(255, 255, 255, 0.05);
+            }
+
+            .social-icon-link {
+                background-color: var(--bg-card) !important;
+                color: var(--accent-gold) !important;
+                border: 1px solid var(--border-subtle);
+                transition: all 0.3s ease;
+            }
+
+            .social-icon-link:hover {
+                background-color: var(--accent-gold) !important;
+                color: var(--bg-dark-base) !important;
+                transform: translateY(-4px);
+            }
+        </style>
+    </head>
+    
+    <body>
+        <div class="navbar-trigger"></div>
+
+        <main>
+            <!-- Navigation Bar -->
+            <nav class="navbar navbar-expand-lg">                
+                <div class="container">
+                    <a class="navbar-brand d-inline-flex flex-column align-items-center justify-content-center" href="main.html" style="text-decoration: none; padding: 5px 0;">
+                        <svg width="42" height="48" viewBox="0 0 100 110" xmlns="http://www.w3.org/2000/svg" style="filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.5));">
+                            <defs>
+                                <linearGradient id="sagarLogoGold" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#FCE38A" />
+                                    <stop offset="50%" stop-color="#F3A152" />
+                                    <stop offset="100%" stop-color="#EAA146" />
+                                </linearGradient>
+                            </defs>
+                            <path d="M 80 28 C 80 8, 25 5, 25 36 C 25 70, 85 55, 85 88 C 85 112, 20 110, 15 85 C 22 86, 32 88, 38 78 C 28 65, 12 55, 12 36 C 12 10, 70 -5, 88 18 Z" fill="url(#sagarLogoGold)"/>
+                            <path d="M 30 36 C 30 20, 68 22, 68 36 C 68 55, 25 45, 25 72 C 25 95, 72 95, 72 82 C 60 82, 42 78, 42 66 C 52 52, 70 42, 70 28 Z" fill="url(#sagarLogoGold)" opacity="0.95"/>
+                        </svg>
+                        <span style="color: #FCE38A; font-weight: 700; font-size: 1.1rem; letter-spacing: 1.5px; text-transform: uppercase; margin-top: 2px; font-family: sans-serif;">
+                            Sagar
+                        </span>
+                    </a>
+
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+    
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <div class="ms-lg-auto d-flex align-items-center mt-3 mt-lg-0">
+                            <a href="main.html" class="custom-btn">
+                                <i class="bi bi-house-door-fill"></i> Home
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Banner Header -->
+            <section class="page-header-banner text-center">
+                <div class="container">
+                    <span class="activity-badge">Mental Health & Public Advocacy</span>
+                    <h1>Activities & Initiatives</h1>
+                    <p class="max-w-2xl mx-auto mt-2" style="max-width: 650px;">
+                        Advocating for mental health awareness, sharing personal stories of resilience, and building community support systems globally and locally.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Activities Main Content -->
+            <section class="section-padding py-5">
+                <div class="container">
+                    
+                    <!-- Activity 1: World Suicide Prevention Day -->
+                    <div class="activity-card">
+                        <div class="row align-items-center">
+                            <div class="col-lg-7 col-12 mb-4 mb-lg-0">
+                                <span class="activity-badge"><i class="bi bi-heart-pulse-fill me-1"></i> Mental Health Sensitization</span>
+                                <h2 class="activity-title">World Suicide Prevention Day 2019</h2>
+                                
+                                <div class="quote-block">
+                                    "Working Together to Prevent Suicide."
+                                </div>
+
+                                <div class="activity-meta">
+                                    <span><i class="bi bi-person-circle"></i> TheSgarOfficial</span>
+                                    <span><i class="bi bi-calendar3"></i> 10th September, 2019</span>
+                                    <span><i class="bi bi-geo-alt-fill"></i> Nepal</span>
+                                </div>
+
+                                <!-- Animated Stat Boxes -->
+                                <div class="row g-3 my-3">
+                                    <div class="col-sm-6 col-12">
+                                        <div class="stat-box">
+                                            <span class="stat-number">16,000,000+</span>
+                                            <span class="stat-label">Global Suicide Attempts / Year</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-12">
+                                        <div class="stat-box">
+                                            <span class="stat-number">Every 40 Sec</span>
+                                            <span class="stat-label">One Life Lost Globally</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <p class="mt-3">
+                                    Suicidal behaviors and tendencies manifest through thoughts, plans, and attempts. Research demonstrates that for every completed suicide, there are more than 20 attempts—offering critical windows of opportunity for intervention and support. Suicide is never the solution. 
+                                </p>
+
+                                <div class="d-flex align-items-center gap-2 mt-4">
+                                    <span class="fw-bold text-white me-2">Spread:</span>
+                                    <span class="badge bg-warning text-dark px-3 py-2 rounded-pill">Love</span>
+                                    <span class="badge bg-warning text-dark px-3 py-2 rounded-pill">Care</span>
+                                    <span class="badge bg-warning text-dark px-3 py-2 rounded-pill">Support</span>
+                                </div>
+                            </div>
+
+                            <!-- Embedded Video Player -->
+                            <div class="col-lg-5 col-12">
+                                <div class="video-wrapper">
+                                    <iframe src="https://www.youtube.com/embed/TMnCl9DZZn0" title="World Suicide Prevention Day Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                </div>
+                                <div class="text-center mt-2">
+                                    <small class="text-muted"><i class="bi bi-play-circle me-1"></i> Watch directly on site or open on YouTube</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Activity 2: Fight with Depression (UNICEF Collaboration) -->
+                    <div class="activity-card">
+                        <div class="row align-items-center">
+                            <div class="col-lg-8 col-12 mb-4 mb-lg-0">
+                                <span class="activity-badge"><i class="bi bi-journal-bookmark-fill me-1"></i> Global Personal Story</span>
+                                <h2 class="activity-title">My Fight with Depression During COVID-19</h2>
+                                
+                                <div class="quote-block">
+                                    "Sharing my story of fighting uncertainties and insecurities during the COVID-19 pandemic with the UNICEF Italia Team."
+                                </div>
+
+                                <div class="activity-meta">
+                                    <span><i class="bi bi-person-circle"></i> TheSgarOfficial</span>
+                                    <span><i class="bi bi-calendar3"></i> June 2020</span>
+                                    <span><i class="bi bi-building"></i> UNICEF Official Platform</span>
+                                </div>
+
+                                <p>
+                                    Enduring repeated episodes of depression while navigating internal and external uncertainties was extremely challenging. Creating rays of hope amidst isolation required immense resilience. By opening up about my mental health journey on a global platform with UNICEF, I aimed to offer solidarity to millions experiencing similar struggles.
+                                </p>
+
+                                <div class="mt-4">
+                                    <a href="https://www.unicef.org/nepal/stories/stories-hope-and-unity-during-covid-19" target="_blank" rel="noopener noreferrer" class="btn custom-btn">
+                                        Read Official Story on UNICEF <i class="bi bi-box-arrow-up-right ms-1"></i>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-12 text-center">
+                                <div class="p-4 rounded-4" style="background: rgba(255,255,255,0.03); border: 1px dashed var(--border-subtle);">
+                                    <i class="bi bi-shield-check display-1 text-warning mb-3 d-block"></i>
+                                    <h5 class="text-white">Resilience & Hope</h5>
+                                    <p class="small text-muted mb-0">"Always be strong and live your life. Spread love, care, and support to everyone around you."</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+        </main>
+
+        <!-- JAVASCRIPT FILES -->
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.bundle.min.js"></script>
+        <script src="js/jquery.sticky.js"></script>
+        <script src="js/custom.js"></script>
+
+        <!-- Dynamic Navbar Scroll Script -->
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const navbar = document.querySelector('.navbar');
+
+                function handleNavbarVisibility() {
+                    if (!navbar) return;
+                    if (window.scrollY > 120) {
+                        navbar.classList.add('nav-hidden');
+                    } else {
+                        navbar.classList.remove('nav-hidden');
+                    }
+                }
+
+                window.addEventListener('scroll', handleNavbarVisibility);
+                handleNavbarVisibility();
+            });
+        </script>
+    </body>
+</html>

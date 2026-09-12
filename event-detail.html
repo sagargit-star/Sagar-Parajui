@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Event Details - Sagar Parajuli</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/templatemo-tiya-golf-club.css">
+
+    <style>
+        :root {
+            --bg-dark: #0b0d19;
+            --card-bg: rgba(22, 27, 46, 0.75);
+            --accent-yellow: #ffe600;
+            --accent-gold: #fce38a;
+            --accent-amber: #f3a152;
+            --accent-pink: #ffb7c5;
+            --text-bright: #ffffff;
+            --text-soft: #cbd5e1;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            background-image: 
+                radial-gradient(at 10% 20%, rgba(252, 227, 138, 0.15) 0px, transparent 50%),
+                radial-gradient(at 90% 80%, rgba(243, 161, 82, 0.12) 0px, transparent 50%);
+            color: var(--text-soft);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        /* Floating Kawaii Background Elements */
+        .kawaii-bg-element {
+            position: absolute;
+            user-select: none;
+            pointer-events: none;
+            opacity: 0.45;
+            animation: floatSlow 6s ease-in-out infinite alternate;
+        }
+        .element-1 { top: 8%; left: 5%; font-size: 2rem; color: var(--accent-yellow); animation-delay: 0s; }
+        .element-2 { top: 25%; right: 8%; font-size: 2.5rem; color: var(--accent-gold); animation-delay: 1.5s; }
+        .element-3 { bottom: 15%; left: 8%; font-size: 2.2rem; color: var(--accent-amber); animation-delay: 3s; }
+        .element-4 { bottom: 10%; right: 12%; font-size: 1.8rem; color: var(--accent-yellow); animation-delay: 4.5s; }
+
+        @keyframes floatSlow {
+            0% { transform: translateY(0px) rotate(0deg) scale(1); }
+            100% { transform: translateY(-18px) rotate(12deg) scale(1.1); }
+        }
+
+        /* Hero / Header Section - Compact Container */
+        .detail-hero {
+            background: linear-gradient(180deg, rgba(20, 33, 61, 0.8) 0%, rgba(11, 13, 25, 0.4) 100%);
+            padding: 60px 0 40px;
+            position: relative;
+        }
+
+        .detail-hero .container {
+            max-width: 680px;
+            margin: 0 auto;
+        }
+
+        .detail-hero h1 {
+            color: var(--text-bright);
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            font-size: clamp(1.8rem, 4vw, 2.4rem);
+            line-height: 1.25;
+            letter-spacing: -0.01em;
+            text-shadow: 0 0 20px rgba(252, 227, 138, 0.4);
+        }
+
+        /* Card Container (Glassmorphism & Warm Glow) */
+        .detail-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 24px;
+            border: 1px solid rgba(252, 227, 138, 0.25);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(252, 227, 138, 0.12);
+            padding: 40px;
+            margin-top: -40px;
+            transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .detail-card:hover {
+            border-color: rgba(252, 227, 138, 0.5);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), 0 0 35px rgba(252, 227, 138, 0.25);
+        }
+
+        /* Image Styling & Zoom Transition */
+        .event-photo-wrapper {
+            position: relative;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(252, 227, 138, 0.1);
+            border: 1px solid rgba(252, 227, 138, 0.2);
+        }
+
+        .event-photo {
+            width: 100%;
+            height: auto;
+            border-radius: 18px;
+            object-fit: cover;
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), filter 0.5s ease;
+        }
+
+        .event-photo-wrapper:hover .event-photo {
+            transform: scale(1.04);
+            filter: brightness(1.05);
+        }
+
+        /* Badges & Accents with Yellow Glow */
+        .event-badge {
+            background: linear-gradient(135deg, var(--accent-yellow), var(--accent-amber));
+            color: #0b0d19;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(252, 227, 138, 0.3);
+            animation: pulseYellowGlow 3s infinite alternate;
+        }
+
+        @keyframes pulseYellowGlow {
+            0% { box-shadow: 0 4px 15px rgba(252, 227, 138, 0.3); }
+            100% { box-shadow: 0 4px 25px rgba(255, 230, 0, 0.6); }
+        }
+
+        .info-box {
+            background: rgba(252, 227, 138, 0.04);
+            border: 1px solid rgba(252, 227, 138, 0.12);
+            border-radius: 14px;
+            padding: 14px 18px;
+            transition: all 0.3s ease;
+        }
+
+        .info-box:hover {
+            background: rgba(252, 227, 138, 0.08);
+            transform: translateX(6px);
+            border-color: rgba(252, 227, 138, 0.35);
+            box-shadow: 0 4px 15px rgba(252, 227, 138, 0.1);
+        }
+
+        .info-label {
+            font-weight: 700;
+            color: var(--accent-gold);
+            margin-right: 6px;
+        }
+
+        /* Back Button */
+        .btn-custom-back {
+            background: linear-gradient(135deg, var(--accent-gold), var(--accent-amber));
+            color: #0b0d19;
+            border-radius: 50px;
+            padding: 12px 28px;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(252, 227, 138, 0.25);
+            margin-top: 15px;
+        }
+
+        .btn-custom-back:hover {
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 8px 25px rgba(252, 227, 138, 0.45);
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="kawaii-bg-element element-1">✦</div>
+    <div class="kawaii-bg-element element-2">❀</div>
+    <div class="kawaii-bg-element element-3">✨</div>
+    <div class="kawaii-bg-element element-4">★</div>
+
+    <section class="detail-hero text-center">
+        <div class="container">
+            <span class="event-badge">✨ Achievement / Event 🌸</span>
+            <h1>Global Teen Hero 20 Under 20 Award</h1>
+            <p style="color: var(--accent-gold); margin-top: 10px;">📍 Soaltee Hotel, Kathmandu, Nepal</p>
+        </div>
+    </section>
+
+    <section class="pb-5">
+        <div class="container">
+            <div class="detail-card">
+                <div class="row align-items-center">
+
+                    <div class="col-lg-6 col-12 mb-4 mb-lg-0">
+                        <div class="event-photo-wrapper">
+                            <img src="images/Gemini_Generated_Image_u3n0i7u3n0i7u3n0.jpeg" alt="Event Photo" class="event-photo">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 col-12">
+                        <h3 class="mb-2" style="color: var(--accent-gold); font-family: 'Syne', sans-serif;">Event Overview</h3>
+                        <h4 class="mb-3 text-white">National Recognition & Leadership</h4>
+
+                        <p>
+                            Recognized as one of the <strong>Top 20 Glocal Teen Heroes</strong> in Nepal during the prestigious 2017 national awards ceremony held at <strong>The Soaltee Hotel in Kathmandu, Nepal</strong>.
+                        </p>
+
+                        <p>
+                            This honor was awarded in celebration of exceptional youth leadership, initiative, and impactful community activism across the country. Out of hundreds of nationwide nominations, Sagar was selected for his early dedication to social change, public health advocacy, and youth empowerment initiatives.
+                        </p>
+
+                        <div class="d-flex flex-column gap-2 my-4">
+                            <div class="info-box">
+                                <span class="info-label">🏆 Recognition:</span> 
+                                <span class="text-white">Top 20 Glocal Teen Hero Finalist</span>
+                            </div>
+                            <div class="info-box">
+                                <span class="info-label">📍 Venue:</span> 
+                                <span class="text-white">The Soaltee Hotel, Kathmandu, Nepal</span>
+                            </div>
+                            <div class="info-box">
+                                <span class="info-label">📅 Year:</span> 
+                                <span class="text-white">2017 A.D.</span>
+                            </div>
+                        </div>
+
+                        <a href="main.html#section_4" class="btn btn-custom-back">
+                            ← Back to Main Page
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>

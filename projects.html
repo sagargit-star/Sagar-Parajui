@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects & Initiatives | Social Impact</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-dark: #0d1b2a;
+            --bg-card: #1b263b;
+            --accent-gold: #d4a373;
+            --accent-coral: #e07a5f;
+            --text-light: #f8f9fa;
+            --text-muted: #e0e1dd;
+            --card-border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Outfit', sans-serif;
+        }
+
+        /* Top Header */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(13, 27, 42, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--card-border);
+            padding: 18px 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .back-home {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 8px 18px;
+            border-radius: 50px;
+            border: 1px solid var(--card-border);
+        }
+
+        .back-home:hover {
+            color: var(--accent-gold);
+            border-color: var(--accent-gold);
+            transform: translateX(-3px);
+        }
+
+        .nav-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+        }
+
+        /* Hero Banner */
+        .hero-section {
+            padding: 80px 24px 60px;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(224, 122, 95, 0.15);
+            color: var(--accent-coral);
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            border: 1px solid rgba(224, 122, 95, 0.3);
+        }
+
+        .hero-title {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #ffffff 0%, var(--accent-gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        /* Stats Strip */
+        .stats-container {
+            max-width: 1100px;
+            margin: 0 auto 60px;
+            padding: 0 24px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 24px;
+            text-align: center;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-gold);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--accent-gold);
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Projects Section */
+        .projects-wrapper {
+            max-width: 1100px;
+            margin: 0 auto 100px;
+            padding: 0 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            transition: all 0.4s ease;
+        }
+
+        .project-card:hover {
+            border-color: var(--accent-gold);
+            box-shadow: 0 20px 40px rgba(212, 163, 115, 0.12);
+        }
+
+        .project-header {
+            padding: 35px 40px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .project-category {
+            color: var(--accent-coral);
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .project-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 12px;
+        }
+
+        .project-motto {
+            font-style: italic;
+            color: var(--accent-gold);
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+
+        .hashtags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .tag {
+            background: rgba(212, 163, 115, 0.12);
+            color: var(--accent-gold);
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            border: 1px solid rgba(212, 163, 115, 0.25);
+        }
+
+        .project-body {
+            padding: 30px 40px;
+        }
+
+        .section-heading {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .project-description {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        /* Achievements Box */
+        .achievements-box {
+            background: rgba(13, 27, 42, 0.6);
+            border-left: 4px solid var(--accent-gold);
+            padding: 25px 30px;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .achievement-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .achievement-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            color: var(--text-light);
+            font-size: 1rem;
+        }
+
+        .achievement-icon {
+            background: rgba(212, 163, 115, 0.15);
+            color: var(--accent-gold);
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .locations-flex {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .loc-badge {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--card-border);
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 24px;
+            border-top: 1px solid var(--card-border);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            background: rgba(13, 27, 42, 0.8);
+        }
+
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2rem; }
+            .project-header, .project-body { padding: 24px; }
+            .project-title { font-size: 1.4rem; }
+            .achievements-box { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Nav -->
+    <header>
+        <div class="nav-container">
+            <a href="main.html" class="back-home">
+                <i class="fa-solid fa-arrow-left"></i> Back to Portfolio
+            </a>
+            <div class="nav-title">Projects & Initiatives</div>
+        </div>
+    </header>
+
+    <!-- Hero Banner -->
+    <section class="hero-section" data-aos="fade-down">
+        <span class="hero-badge"><i class="fa-solid fa-heart-pulse"></i> Social Impact & Leadership</span>
+        <h1 class="hero-title">Community Empowerment Projects</h1>
+        <p class="hero-subtitle">
+            Dedicated to breaking social taboos, promoting public health awareness, and delivering educational accessibility for underprivileged children across Nepal.
+        </p>
+    </section>
+
+    <!-- Stats Strip -->
+    <div class="stats-container" data-aos="fade-up" data-aos-delay="100">
+        <div class="stat-card">
+            <div class="stat-number">150+</div>
+            <div class="stat-label">Girls Benefited</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">50+</div>
+            <div class="stat-label">Children Sponsored</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">5</div>
+            <div class="stat-label">Districts Reached</div>
+        </div>
+    </div>
+
+    <!-- Main Projects Content -->
+    <main class="projects-wrapper">
+
+        <!-- PROJECT 1 -->
+        <article class="project-card" data-aos="fade-up" data-aos-delay="150">
+            <div class="project-header">
+                <div class="project-category">
+                    <i class="fa-solid fa-hand-holding-heart"></i> Health & Community Advocacy
+                </div>
+                <h2 class="project-title">Period Empowerment Project – Comprehensive Menstrual Health Program</h2>
+                <div class="project-motto">
+                    <i class="fa-solid fa-quote-left" style="opacity: 0.5; font-size: 0.8rem;"></i>
+                    "Together Towards for Healthier Periods"
+                </div>
+                <div class="hashtags">
+                    <span class="tag">#LoveRespectCelebrateMenstruation</span>
+                    <span class="tag">#ProudToBleed</span>
+                    <span class="tag">#MenstrualHealth</span>
+                </div>
+            </div>
+
+            <div class="project-body">
+                <div class="section-heading">
+                    <i class="fa-solid fa-circle-info" style="color: var(--accent-gold);"></i> Vision & Mission
+                </div>
+                <p class="project-description">
+                    Initiated with the vision of breaking silence as well as stigma and taboos related to menstruation at the community level, and for promoting healthy and sustainable choices for menstrual health management for every adolescent girl and woman.
+                </p>
+
+                <div class="achievements-box">
+                    <div class="section-heading" style="margin-bottom: 18px;">
+                        <i class="fa-solid fa-trophy" style="color: var(--accent-gold);"></i> Key Achievements
+                    </div>
+                    <ul class="achievement-list">
+                        <li class="achievement-item">
+                            <div class="achievement-icon"><i class="fa-solid fa-bullhorn"></i></div>
+                            <div>
+                                Spearheaded two viral social media campaigns: <strong>#LoveRespectCelebrateMenstruation</strong> and <strong>#ProudToBleed</strong>.
+                            </div>
+                        </li>
+                        <li class="achievement-item">
+                            <div class="achievement-icon"><i class="fa-solid fa-users"></i></div>
+                            <div>
+                                <strong>150 adolescent girls</strong> benefited from interactive MHM awareness sessions and practical hands-on training in crafting reusable cloth pads.
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </article>
+
+        <!-- PROJECT 2 -->
+        <article class="project-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="project-header">
+                <div class="project-category">
+                    <i class="fa-solid fa-graduation-cap"></i> Education & Child Welfare
+                </div>
+                <h2 class="project-title">Child Education Support Project</h2>
+                <div class="project-motto">
+                    <i class="fa-solid fa-quote-left" style="opacity: 0.5; font-size: 0.8rem;"></i>
+                    Sponsorship for Child Education
+                </div>
+                <div class="hashtags">
+                    <span class="tag">#EduParent</span>
+                    <span class="tag">#EduDad</span>
+                    <span class="tag">#EduMom</span>
+                    <span class="tag">#LetMyEducationAct</span>
+                </div>
+            </div>
+
+            <div class="project-body">
+                <div class="section-heading">
+                    <i class="fa-solid fa-circle-info" style="color: var(--accent-gold);"></i> Vision & Mission
+                </div>
+                <p class="project-description">
+                    Towards the Vision of a Child-Friendly Nepal with educational access for every child, the Sponsorship for Education Program was conducted to support needy children financially and materially to help them fulfill their educational dreams.
+                </p>
+
+                <div class="achievements-box">
+                    <div class="section-heading" style="margin-bottom: 18px;">
+                        <i class="fa-solid fa-trophy" style="color: var(--accent-gold);"></i> Key Achievements
+                    </div>
+                    <ul class="achievement-list">
+                        <li class="achievement-item">
+                            <div class="achievement-icon"><i class="fa-solid fa-child-reaching"></i></div>
+                            <div>
+                                Provided comprehensive educational sponsorship to <strong>more than 50 students</strong> across multiple remote and urban districts.
+                            </div>
+                        </li>
+                        <li class="achievement-item">
+                            <div class="achievement-icon"><i class="fa-solid fa-map-location-dot"></i></div>
+                            <div>
+                                <strong>Impacted Regions:</strong>
+                                <div class="locations-flex">
+                                    <span class="loc-badge"><i class="fa-solid fa-location-dot"></i> Bajura</span>
+                                    <span class="loc-badge"><i class="fa-solid fa-location-dot"></i> Tanahun</span>
+                                    <span class="loc-badge"><i class="fa-solid fa-location-dot"></i> Panchthar</span>
+                                    <span class="loc-badge"><i class="fa-solid fa-location-dot"></i> Baglung</span>
+                                    <span class="loc-badge"><i class="fa-solid fa-location-dot"></i> Surkhet</span>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </article>
+
+    </main>
+
+
+    <!-- AOS Script -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
+    </script>
+</body>
+</html>

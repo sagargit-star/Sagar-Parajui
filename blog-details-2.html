@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COVID 19 & Maskne | Sagar Parajuli</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-color: #0c1017;
+            --card-bg: #1c212b;
+            --accent-pink: #e63946;
+            --accent-glow: rgba(230, 57, 70, 0.25);
+            --text-main: #f0f6fc;
+            --text-sub: #c9d1d9;
+            --border-color: #30363d;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* Top Header Bar */
+        .top-header {
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border-color);
+            background: rgba(12, 16, 23, 0.85);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .back-btn-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-main);
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 8px 18px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .back-btn-pill:hover {
+            color: #ffffff;
+            background: var(--accent-pink);
+            border-color: var(--accent-pink);
+            transform: translateX(-5px);
+            box-shadow: 0 4px 15px var(--accent-glow);
+        }
+
+        /* Fade-in Animation */
+        .animate-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Hero & Typography */
+        .category-badge {
+            background: linear-gradient(135deg, #e63946, #ff758c);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            display: inline-block;
+            box-shadow: 0 4px 12px var(--accent-glow);
+        }
+
+        .blog-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            line-height: 1.3;
+            color: #ffffff;
+        }
+
+        .blog-meta {
+            color: var(--text-sub);
+            font-size: 0.95rem;
+        }
+
+        .blog-subtitle {
+            color: #ffffff;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-top: 35px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-left: 15px;
+        }
+
+        .blog-subtitle::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 15%;
+            height: 70%;
+            width: 4px;
+            background: var(--accent-pink);
+            border-radius: 2px;
+        }
+
+        /* Fixed Visual Cards */
+        .feature-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 22px;
+            margin: 10px 0;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-pink);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .feature-card p {
+            color: var(--text-sub) !important;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .icon-box {
+            width: 48px;
+            height: 48px;
+            border-radius: 10px;
+            background: rgba(230, 57, 70, 0.15);
+            color: var(--accent-pink);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            margin-bottom: 14px;
+        }
+
+        /* Custom List Styling */
+        .styled-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .styled-list li {
+            position: relative;
+            padding-left: 32px;
+            margin-bottom: 15px;
+            color: var(--text-main);
+        }
+
+        .styled-list li::before {
+            content: '\f058';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            top: 2px;
+            color: var(--accent-pink);
+            font-size: 1.1rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Header -->
+    <header class="top-header">
+        <div class="container" style="max-width: 850px;">
+            <a href="blog.html" class="back-btn-pill">
+                <i class="fa-solid fa-arrow-left"></i> Back to Blog
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="container my-5 animate-up" style="max-width: 850px;">
+
+        <!-- Category Badge -->
+        <div class="mb-3">
+            <span class="category-badge"><i class="fa-solid fa-virus-covid me-1"></i> COVID-19 & Skin Health</span>
+        </div>
+
+        <!-- Title -->
+        <h1 class="blog-title mb-3">COVID 19 & MASKNE</h1>
+
+        <!-- Author & Date Metadata -->
+        <div class="blog-meta mb-4 pb-3 border-bottom border-secondary">
+            <span><i class="fa-regular fa-user me-1 text-danger"></i> Sagar Parajuli</span> &bull; 
+            <span><i class="fa-regular fa-calendar me-1 text-danger"></i> May 2, 2022</span> &bull; 
+            <span><i class="fa-regular fa-clock me-1 text-danger"></i> 3 min read</span>
+        </div>
+
+        <article>
+            <p>One day, while going out with a colleague for lunch during office hours, I noticed she felt very uncomfortable wearing a mask. However, she refused to take it off until the food arrived. As soon as our order arrived and she took off her mask, I noticed a visible circle of red acne around her mouth. She felt very awkward, so I decided not to ask about it.</p>
+
+            <p>A few days later, I saw another young lady in the office with the same problem: acne around her mouth. She repeatedly told her friends that her acne was worsening after wearing masks due to COVID-19. This made me wonder whether this acne was associated with wearing masks or just a coincidence. Later, I researched online and discovered that these breakouts are known as <strong>Maskne</strong>, which is significantly associated with mask wear.</p>
+
+            <h2 class="blog-subtitle">What is Maskne?</h2>
+            <p>Technically, Maskne is a type of <em>‘acne mechanica’</em>—acne caused by mechanical friction between the mask and the skin. The masks we wear create friction against our skin, leading to inflammation, irritation, and clogged pores. This is further exacerbated by moisture absorption from humidity and sweat.</p>
+
+            <p>Maskne is primarily due to continuous textile adherence and friction, creating a hot, humid environment inside the mask that modifies skin microbiota and sebum production. It occurs when people wear tight masks for extended periods. Maskne includes several skin conditions, such as acne, rosacea, irritant contact dermatitis, atopic eczema, folliculitis, and urticaria.</p>
+
+            <h2 class="blog-subtitle">Causes of Maskne</h2>
+            
+            <div class="row g-3 my-3">
+                <div class="col-md-4">
+                    <div class="feature-card h-100">
+                        <div class="icon-box"><i class="fa-solid fa-hand-dots"></i></div>
+                        <h6 class="text-white fw-bold mb-2">1. Mechanical Force</h6>
+                        <p class="mb-0">Friction from the mask irritates small hair follicles, triggering inflammation and clogged pores.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card h-100">
+                        <div class="icon-box"><i class="fa-solid fa-temperature-high"></i></div>
+                        <h6 class="text-white fw-bold mb-2">2. Humid Environment</h6>
+                        <p class="mb-0">Trapped warm air creates a microclimate favoring yeast, bacteria, and skin flora growth.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card h-100">
+                        <div class="icon-box"><i class="fa-solid fa-box-tissue"></i></div>
+                        <h6 class="text-white fw-bold mb-2">3. Mask Material</h6>
+                        <p class="mb-0">Certain synthetic materials cause allergic reactions, worsening inflammation and flare-ups.</p>
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="blog-subtitle">Common Symptoms</h2>
+            <p>Maskne is mostly found on the chin area (O-zone) compared to the cheeks. It appears as mild papular eruptions, seborrhea, and comedones accompanied by skin irritation.</p>
+
+            <h2 class="blog-subtitle">Management & Prevention</h2>
+            <ul class="styled-list">
+                <li><strong>Practice Mask Hygiene:</strong> Change surgical masks every 4–6 hours. If using cloth masks, choose 100% cotton and wash them regularly with fragrance-free detergent.</li>
+                <li><strong>Use Gentle Cleansers:</strong> Cleanse face with mild products avoiding alcohol and heavy perfumes. For severe cases, consult a dermatologist regarding benzoyl peroxide or salicylic acid.</li>
+                <li><strong>Hydrate and Protect:</strong> Apply oil-free, non-comedogenic moisturizers to keep skin hydrated, and apply sunscreen 10–15 minutes before putting on a mask.</li>
+                <li><strong>Maintain a Routine:</strong> Wash your face in the morning, after removing your mask, and before bed using lukewarm water. Gently pat dry with a clean towel.</li>
+                <li><strong>Avoid Heavy Makeup:</strong> Minimize makeup usage, especially around areas covered by the mask, to prevent pore blockage.</li>
+            </ul>
+        </article>
+    </main>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

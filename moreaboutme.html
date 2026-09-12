@@ -1,0 +1,579 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="description" content="More About Me - Sagar Parajuli | Public Health & Professional Profile">
+        <meta name="author" content="Sagar Parajuli">
+
+        <title>More About Me - Sagar Parajuli</title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/bootstrap-icons.css" rel="stylesheet">
+        <link href="css/templatemo-tiya-golf-club.css" rel="stylesheet">
+
+        <style>
+            :root {
+                --bg-dark-base: #030712;
+                --bg-card: rgba(15, 23, 42, 0.75);
+                --bg-card-hover: rgba(30, 41, 59, 0.85);
+                --accent-gold: #fce38a;
+                --accent-warm: #f3a152;
+                --accent-pink: #ff5277;
+                --accent-cyan: #38bdf8;
+                --accent-purple: #a855f7;
+                --text-main: #f8fafc;
+                --text-muted: #cbd5e1;
+                --border-subtle: rgba(252, 227, 138, 0.12);
+            }
+
+            body {
+                background: linear-gradient(180deg, #030712 0%, #070d1e 35%, #0b132b 70%, #030712 100%) !important;
+                background-attachment: fixed !important;
+                color: var(--text-main) !important;
+                font-family: 'DM Sans', sans-serif;
+                overflow-x: hidden;
+            }
+
+            /* Floating Navbar */
+            .navbar {
+                position: fixed !important;
+                top: 0;
+                left: 0;
+                right: 0;
+                z-index: 1030;
+                background: rgba(3, 7, 18, 0.85) !important;
+                backdrop-filter: blur(16px);
+                -webkit-backdrop-filter: blur(16px);
+                border-bottom: 1px solid var(--border-subtle);
+                transition: top 0.4s ease-in-out, background 0.3s ease;
+            }
+
+            .navbar.nav-hidden {
+                top: -90px !important;
+            }
+
+            .navbar-trigger {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 25px;
+                z-index: 1029;
+            }
+
+            .navbar.nav-hidden:hover,
+            .navbar-trigger:hover + .navbar,
+            .navbar:focus-within {
+                top: 0 !important;
+                background: rgba(3, 7, 18, 0.95) !important;
+            }
+
+            /* Header Banner */
+            .page-header-banner {
+                position: relative;
+                padding-top: 150px;
+                padding-bottom: 60px;
+                background: radial-gradient(circle at 50% 10%, #0f172a 0%, #030712 85%) !important;
+                text-align: center;
+            }
+
+            .page-header-banner h1 {
+                font-size: 3rem;
+                font-weight: 700;
+                background: linear-gradient(135deg, #ffffff 0%, var(--accent-gold) 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+
+            .page-header-banner p {
+                color: #cbd5e1 !important;
+            }
+
+            /* Glassmorphism Section Card */
+            .profile-card {
+                background: var(--bg-card);
+                backdrop-filter: blur(12px);
+                -webkit-backdrop-filter: blur(12px);
+                border: 1px solid var(--border-subtle);
+                border-radius: 20px;
+                padding: 35px;
+                margin-bottom: 30px;
+                box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+                transition: all 0.35s ease;
+            }
+
+            .profile-card:hover {
+                background: var(--bg-card-hover);
+                border-color: rgba(252, 227, 138, 0.25);
+            }
+
+            .section-title-badge {
+                background: rgba(252, 227, 138, 0.1);
+                color: var(--accent-gold);
+                font-size: 0.85rem;
+                font-weight: 600;
+                padding: 6px 14px;
+                border-radius: 20px;
+                border: 1px solid rgba(252, 227, 138, 0.2);
+                display: inline-block;
+                margin-bottom: 15px;
+            }
+
+            /* Animated Bubbles (Interests) */
+            .bubble-grid {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 25px;
+                margin-top: 20px;
+            }
+
+            .interest-bubble {
+                width: 170px;
+                height: 170px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                padding: 18px;
+                font-weight: 700;
+                font-size: 0.95rem;
+                color: #fff;
+                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+                transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+                cursor: pointer;
+            }
+
+            .interest-bubble:hover {
+                transform: scale(1.1) translateY(-5px);
+            }
+
+            .bubble-pink {
+                background: linear-gradient(135deg, #ff5277, #e11d48);
+                box-shadow: 0 10px 25px rgba(255, 82, 119, 0.35);
+            }
+
+            .bubble-cyan {
+                background: linear-gradient(135deg, #38bdf8, #0284c7);
+                box-shadow: 0 10px 25px rgba(56, 189, 248, 0.35);
+            }
+
+            .bubble-orange {
+                background: linear-gradient(135deg, #f97316, #ea580c);
+                box-shadow: 0 10px 25px rgba(249, 115, 22, 0.35);
+            }
+
+            .bubble-purple {
+                background: linear-gradient(135deg, #a855f7, #7e22ce);
+                box-shadow: 0 10px 25px rgba(168, 85, 247, 0.35);
+                width: 200px;
+                height: 90px;
+                border-radius: 50px;
+            }
+
+            /* Timeline & Flowchart Nodes */
+            .flow-container {
+                position: relative;
+                padding-left: 20px;
+            }
+
+            .flow-node {
+                position: relative;
+                padding-left: 30px;
+                margin-bottom: 25px;
+                border-left: 2px dashed rgba(252, 227, 138, 0.3);
+            }
+
+            .flow-node::before {
+                content: '';
+                position: absolute;
+                left: -9px;
+                top: 4px;
+                width: 16px;
+                height: 16px;
+                border-radius: 50%;
+                background: var(--accent-gold);
+                box-shadow: 0 0 10px var(--accent-gold);
+            }
+
+            .flow-node-title {
+                font-size: 1.1rem;
+                font-weight: 700;
+                color: #ffffff;
+                margin-bottom: 4px;
+            }
+
+            .flow-node-sub {
+                font-size: 0.88rem;
+                color: var(--accent-warm);
+                margin-bottom: 6px;
+            }
+
+            .flow-node-desc {
+                font-size: 0.9rem;
+                color: var(--text-muted);
+            }
+
+            /* Consultation Interactive Diagram */
+            .diagram-center {
+                background: linear-gradient(135deg, #a855f7, #6366f1);
+                color: #fff;
+                padding: 15px 25px;
+                border-radius: 12px;
+                text-align: center;
+                font-weight: 700;
+                max-width: 320px;
+                margin: 0 auto 30px auto;
+                box-shadow: 0 8px 20px rgba(168, 85, 247, 0.3);
+            }
+
+            .diagram-card {
+                background: rgba(15, 23, 42, 0.9);
+                border: 1px solid rgba(168, 85, 247, 0.3);
+                border-radius: 16px;
+                padding: 20px;
+                text-align: center;
+                height: 100%;
+                transition: all 0.3s ease;
+            }
+
+            .diagram-card:hover {
+                transform: translateY(-5px);
+                border-color: var(--accent-purple);
+                box-shadow: 0 10px 25px rgba(168, 85, 247, 0.2);
+            }
+
+            .diagram-card h2 {
+                color: var(--accent-gold);
+                font-size: 1rem;
+                font-weight: 700;
+                margin-bottom: 8px;
+            }
+
+            .diagram-card p {
+                font-size: 0.85rem;
+                color: var(--text-muted);
+                margin-bottom: 0;
+            }
+
+            /* Sidebar Skills List */
+            .skill-group-title {
+                color: var(--accent-gold);
+                font-size: 0.9rem;
+                font-weight: 700;
+                letter-spacing: 0.5px;
+                text-transform: uppercase;
+                margin-top: 15px;
+                margin-bottom: 10px;
+                border-bottom: 1px solid var(--border-subtle);
+                padding-bottom: 5px;
+            }
+
+            .skill-tag-list {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+
+            .skill-tag {
+                background: rgba(255, 255, 255, 0.06);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                color: #e2e8f0;
+                font-size: 0.82rem;
+                padding: 4px 10px;
+                border-radius: 8px;
+                transition: all 0.2s ease;
+            }
+
+            .skill-tag:hover {
+                background: rgba(252, 227, 138, 0.15);
+                border-color: var(--accent-gold);
+                color: #fff;
+            }
+
+            /* Language Badges */
+            .lang-badge {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                background: rgba(255, 255, 255, 0.04);
+                padding: 10px 15px;
+                border-radius: 10px;
+                margin-bottom: 8px;
+                border: 1px solid var(--border-subtle);
+            }
+        </style>
+    </head>
+    
+    <body>
+        <div class="navbar-trigger"></div>
+
+        <main>
+            <!-- Navigation Bar -->
+            <nav class="navbar navbar-expand-lg">
+                <div class="container d-flex justify-content-between align-items-center">
+                    <a class="navbar-brand d-inline-flex flex-column align-items-center justify-content-center" href="main.html" style="text-decoration: none; padding: 5px 0;">
+                        <svg width="42" height="48" viewBox="0 0 100 110" xmlns="http://www.w3.org/2000/svg" style="filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.5));">
+                            <defs>
+                                <linearGradient id="sagarLogoGold" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#FCE38A" />
+                                    <stop offset="50%" stop-color="#F3A152" />
+                                    <stop offset="100%" stop-color="#EAA146" />
+                                </linearGradient>
+                            </defs>
+                            <path d="M 80 28 C 80 8, 25 5, 25 36 C 25 70, 85 55, 85 88 C 85 112, 20 110, 15 85 C 22 86, 32 88, 38 78 C 28 65, 12 55, 12 36 C 12 10, 70 -5, 88 18 Z" fill="url(#sagarLogoGold)"/>
+                            <path d="M 30 36 C 30 20, 68 22, 68 36 C 68 55, 25 45, 25 72 C 25 95, 72 95, 72 82 C 60 82, 42 78, 42 66 C 52 52, 70 42, 70 28 Z" fill="url(#sagarLogoGold)" opacity="0.95"/>
+                        </svg>
+                        <span style="color: #FCE38A; font-weight: 700; font-size: 1.1rem; letter-spacing: 1.5px; text-transform: uppercase; margin-top: 2px; font-family: sans-serif;">
+                            Sagar
+                        </span>
+                    </a>
+
+                    <!-- Return to Home Button -->
+                    <a href="main.html" class="btn custom-btn" style="background: linear-gradient(135deg, var(--accent-gold), var(--accent-warm)); color: #030712; font-weight: 700; border-radius: 30px; padding: 8px 20px; text-decoration: none; transition: transform 0.2s ease, box-shadow 0.2s ease;">
+                        <i class="bi bi-arrow-left me-1"></i> Return to Home
+                    </a>
+                </div>
+            </nav>
+
+            <!-- Banner Header -->
+            <section class="page-header-banner">
+                <div class="container">
+                    <span class="section-title-badge"><i class="bi bi-person-badge me-1"></i> Public Health Leader & Researcher</span>
+                    <h1>More About Me</h1>
+                    <p class="mx-auto mt-2" style="max-width: 650px; color: #cbd5e1;">
+                        Comprehensive overview of my core interests, professional career trajectory, academic background, technical competencies, and ongoing consultations.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Main Content Grid -->
+            <section class="section-padding py-5">
+                <div class="container">
+                    <div class="row">
+                        
+                        <!-- Left Column -->
+                        <div class="col-lg-8 col-12">
+
+                            <!-- Section 1: Interests -->
+                            <div class="profile-card">
+                                <span class="section-title-badge"><i class="bi bi-compass-fill me-1"></i> Core Focus</span>
+                                <h2 class="text-white mb-3 h3">My Interests & Areas of Work</h2>
+                                
+                                <div class="bubble-grid">
+                                    <div class="interest-bubble bubble-pink">
+                                        SRHR & GESI Intersectionality
+                                    </div>
+                                    <div class="interest-bubble bubble-cyan">
+                                        Mental & Emotional Health
+                                    </div>
+                                    <div class="interest-bubble bubble-orange">
+                                        Research & Field Epidemiology
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-center mt-3">
+                                    <div class="interest-bubble bubble-purple">
+                                        Consultation Service
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Section 2: Professional Engagement -->
+                            <div class="profile-card">
+                                <span class="section-title-badge"><i class="bi bi-briefcase-fill me-1"></i> Career Roadmap</span>
+                                <h2 class="text-white mb-4 h3">Professional Engagement</h2>
+
+                                <div class="flow-container">
+                                    <div class="flow-node">
+                                        <div class="flow-node-title">COVID-19 Data Management & Analysis Officer</div>
+                                        <div class="flow-node-sub">Department of Health Services, MoHP Nepal | Jan 2021 – Jul 2021</div>
+                                        <div class="flow-node-desc">Led data synthesis, epidemiological tracking, and analytical reporting during the peak national pandemic response.</div>
+                                    </div>
+
+                                    <div class="flow-node">
+                                        <div class="flow-node-title">Project Officer</div>
+                                        <div class="flow-node-sub">Sunaulo Parivar Nepal - Marie Stopes International Nepal | Jul 2021 – Dec 2021</div>
+                                        <div class="flow-node-desc">Managed the "UNFPA Family Planning Project", executing field initiatives and expanding reproductive healthcare access.</div>
+                                    </div>
+
+                                    <div class="flow-node">
+                                        <div class="flow-node-title">Program Officer</div>
+                                        <div class="flow-node-sub">Janata Clinic Samarta Nepal</div>
+                                        <div class="flow-node-desc">Coordinated healthcare outreach programs and community clinic operations.</div>
+                                    </div>
+
+                                    <div class="flow-node">
+                                        <div class="flow-node-title">Coordinator</div>
+                                        <div class="flow-node-sub">Youth Connection Center - AYON</div>
+                                        <div class="flow-node-desc">Steered youth-focused public health empowerment, policy dialogues, and community drives.</div>
+                                    </div>
+
+                                    <div class="flow-node">
+                                        <div class="flow-node-title">Province Coordinator</div>
+                                        <div class="flow-node-sub">Nepal Youth Network for SDGs</div>
+                                        <div class="flow-node-desc">Facilitated provincial level programs aligned with Sustainable Development Goals (SDGs).</div>
+                                    </div>
+
+                                    <div class="flow-node">
+                                        <div class="flow-node-title">Leadership Roles & Governance</div>
+                                        <div class="flow-node-sub">Shayaam Nepal & Nepal Youth Red Cross Circle</div>
+                                        <div class="flow-node-desc">
+                                            • Secretary – Shayaam Nepal<br>
+                                            • Vice-President – Nepal Youth Red Cross Circle, Nobel College<br>
+                                            • Sarathi – Visible Impact
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Section 3: Academic Background -->
+                            <div class="profile-card">
+                                <span class="section-title-badge"><i class="bi bi-mortarboard-fill me-1"></i> Education</span>
+                                <h2 class="text-white mb-4 h3">Academic Background</h2>
+
+                                <div class="flow-container">
+                                    <div class="flow-node">
+                                        <div class="flow-node-title">Master’s Degree of Public Health (MPH)</div>
+                                        <div class="flow-node-sub">Specialization in Public Health Service Management | School of Health & Allied Sciences, Pokhara University</div>
+                                        <div class="flow-node-desc">2025 – Completed</div>
+                                    </div>
+
+                                    <div class="flow-node">
+                                        <div class="flow-node-title">Bachelor Degree of Science in Public Health (BPH)</div>
+                                        <div class="flow-node-sub">Pokhara University | Nobel College</div>
+                                        <div class="flow-node-desc"><strong>Dissertation:</strong> Beliefs and Risk Factors Associated with Suicidal and Self-Harm Behaviors among Young Adults of Kathmandu District.</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Section 4: Consultation Service -->
+                            <div class="profile-card">
+                                <span class="section-title-badge"><i class="bi bi-diagram-3-fill me-1"></i> Advisory & Consultancy</span>
+                                <h2 class="text-white mb-4 h3">Consultation Service & Engagement</h2>
+
+                                <div class="diagram-center">
+                                    <i class="bi bi-gear-wide-connected me-1"></i> Consultation Services Framework
+                                </div>
+
+                                <div class="row g-3">
+                                    <div class="col-md-4 col-12">
+                                        <div class="diagram-card">
+                                            <h2>Youth Mobilization & Engagement</h2>
+                                            <p class="mt-2">The SOCHAI<br><small class="text-muted">Kathmandu, Nepal (Ongoing)</small></p>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 col-12">
+                                        <div class="diagram-card">
+                                            <h2>Municipal Health Systems & Emergencies</h2>
+                                            <p class="mt-2">Samarthya Nepal<br><small class="text-muted">Ongoing Consultation (2020–Present)</small></p>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 col-12">
+                                        <div class="diagram-card">
+                                            <h2>Sexual & Reproductive Health Fiesta</h2>
+                                            <p class="mt-2">Marie Stopes Nepal<br><small class="text-muted">Khotang, Shubhadra Madan Foundation</small></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- Right Column -->
+                        <div class="col-lg-4 col-12">
+
+                            <!-- Skills Card -->
+                            <div class="profile-card">
+                                <span class="section-title-badge"><i class="bi bi-tools me-1"></i> Expertise</span>
+                                <h2 class="text-white mb-3 h4">Skills & Software</h2>
+
+                                <div class="skill-group-title">Technical Skills</div>
+                                <p class="small text-muted mb-2">Research Data Management & Analytical Tools:</p>
+                                <div class="skill-tag-list">
+                                    <span class="skill-tag">SPSS</span>
+                                    <span class="skill-tag">Epi Data</span>
+                                    <span class="skill-tag">STATA</span>
+                                    <span class="skill-tag">R</span>
+                                    <span class="skill-tag">NVIVO</span>
+                                    <span class="skill-tag">EndNote</span>
+                                    <span class="skill-tag">Zotero</span>
+                                </div>
+
+                                <div class="skill-group-title">Program Facilitation Skills</div>
+                                <div class="d-flex flex-column gap-2 mt-2">
+                                    <div class="skill-tag">• Menstrual Health Management Workshop</div>
+                                    <div class="skill-tag">• Comprehensive Sexuality Education (CSE)</div>
+                                    <div class="skill-tag">• Breast Cancer Self-Assessment</div>
+                                    <div class="skill-tag">• Reusable Pad Making Training & MHM</div>
+                                    <div class="skill-tag">• First Aid Training</div>
+                                    <div class="skill-tag">• Health Emergency & Preparedness (HE3PRA)</div>
+                                    <div class="skill-tag">• GESI Session Facilitation</div>
+                                    <div class="skill-tag">• SDGs Workshop / Orientation</div>
+                                    <div class="skill-tag">• Golden 1000 Days Breastfeeding Counseling</div>
+                                    <div class="skill-tag">• Model United Nations (MUN) Orientation</div>
+                                </div>
+                            </div>
+
+                            <!-- Languages Card -->
+                            <div class="profile-card">
+                                <span class="section-title-badge"><i class="bi bi-translate me-1"></i> Communication</span>
+                                <h2 class="text-white mb-3 h4">Languages</h2>
+
+                                <div class="lang-badge">
+                                    <span class="fw-bold text-white"><i class="bi bi-chat-text-fill me-2 text-warning"></i> English</span>
+                                    <span class="badge bg-warning text-dark">Professional</span>
+                                </div>
+
+                                <div class="lang-badge">
+                                    <span class="fw-bold text-white"><i class="bi bi-chat-text-fill me-2 text-warning"></i> Nepali</span>
+                                    <span class="badge bg-warning text-dark">Native</span>
+                                </div>
+
+                                <div class="lang-badge">
+                                    <span class="fw-bold text-white"><i class="bi bi-chat-text-fill me-2 text-warning"></i> Hindi</span>
+                                    <span class="badge bg-warning text-dark">Fluent</span>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- JAVASCRIPT FILES -->
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.bundle.min.js"></script>
+        <script src="js/jquery.sticky.js"></script>
+        <script src="js/custom.js"></script>
+
+        <!-- Dynamic Navbar Scroll Script -->
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const navbar = document.querySelector('.navbar');
+
+                function handleNavbarVisibility() {
+                    if (!navbar) return;
+                    if (window.scrollY > 120) {
+                        navbar.classList.add('nav-hidden');
+                    } else {
+                        navbar.classList.remove('nav-hidden');
+                    }
+                }
+
+                window.addEventListener('scroll', handleNavbarVisibility);
+                handleNavbarVisibility();
+            });
+        </script>
+    </body>
+</html>
