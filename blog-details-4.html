@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reimagining Public Health Communication in the Era of Artificial Intelligence | Sagar Parajuli</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-color: #0c1017;
+            --card-bg: #161b22;
+            --accent-pink: #e63946;
+            --accent-gold: #f4a261;
+            --accent-warm: #e76f51;
+            --text-color: #ffffff;
+            --muted-color: #a0a6b1;
+            --border-color: #2d3748;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.8;
+        }
+
+        .blog-header {
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 30px;
+            margin-bottom: 40px;
+        }
+
+        .blog-post-title {
+            font-size: 2.3rem;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #ffffff 0%, #a0a6b1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .blog-post-meta {
+            color: var(--muted-color);
+            font-size: 0.95rem;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .blog-category-badge {
+            background-color: var(--accent-pink);
+            color: white;
+            font-size: 0.85rem;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        .hero-img-container {
+            width: 100%;
+            max-height: 480px;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 40px;
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .blog-content p {
+            font-size: 1.1rem;
+            color: #e2e8f0;
+            margin-bottom: 1.5rem;
+        }
+
+        .blog-content h2 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #fff;
+            margin-top: 2.5rem;
+            margin-bottom: 1.2rem;
+            border-left: 4px solid var(--accent-pink);
+            padding-left: 12px;
+        }
+
+        .blog-content blockquote {
+            background-color: var(--card-bg);
+            border-left: 4px solid var(--accent-gold);
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+            color: #cbd5e1;
+        }
+
+        /* Video Showcase Cards */
+        .reel-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            margin: 30px 0;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .reel-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.6);
+        }
+
+        .reel-img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            filter: brightness(0.9);
+        }
+
+        .reel-card-body {
+            padding: 20px;
+        }
+
+        .reel-title {
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .reel-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #1877f2, #0056b3);
+            color: white;
+            text-decoration: none;
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: opacity 0.2s ease;
+        }
+
+        .reel-btn:hover {
+            color: white;
+            opacity: 0.9;
+        }
+
+        /* Highlight List */
+        .styled-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .styled-list li {
+            position: relative;
+            padding-left: 28px;
+            margin-bottom: 12px;
+            font-size: 1.05rem;
+            color: #e2e8f0;
+        }
+
+        .styled-list li::before {
+            content: "\f058";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: var(--accent-pink);
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3">
+        <div class="container">
+            <a href="blog.html" class="btn custom-btn" style="background: linear-gradient(135deg, var(--accent-gold), var(--accent-warm)); color: #0c1017; font-weight: 700; border-radius: 30px; padding: 8px 20px; text-decoration: none;">
+                <i class="fa-solid fa-arrow-left me-1"></i> Return to Blog
+            </a>
+        </div>
+    </nav>
+
+    <main class="container my-5" style="max-width: 860px;">
+        
+        <header class="blog-header">
+            <span class="blog-category-badge mb-3">AI & Public Health Communication</span>
+            <h1 class="blog-post-title">Reimagining Public Health Communication in the Era of Artificial Intelligence</h1>
+            <div class="blog-post-meta">
+                <span><i class="fa-regular fa-calendar me-1"></i> Sep 12, 2026</span>
+                <span><i class="fa-regular fa-clock me-1"></i> 5 min read</span>
+                <span><i class="fa-solid fa-user me-1"></i> Sagar Parajuli</span>
+            </div>
+        </header>
+
+        <div class="hero-img-container">
+            <img src="images/4.jpeg" alt="Reimagining Public Health Communication in the Era of Artificial Intelligence" class="hero-img">
+        </div>
+
+        <article class="blog-content">
+            
+            <p>For me, innovation in public health has never been limited to introducing a completely new program, technology, or intervention. Sometimes, innovation begins with a much simpler question:</p>
+
+            <blockquote>
+                "Can we find a better way to reach people?"
+            </blockquote>
+
+            <p>And I believe this should be a question popping up every time for public health practitioners who aspire to get connected with the community. For me, public health is ultimately about people. And keeping this in mind, we may develop policies, design programs, collect data, prepare guidelines, and deliver services, but all of these efforts have limited impact if health information does not reach people in a way they can understand, relate to, and use in their everyday lives; and for me, that's ultimately <strong>“connecting with community”</strong> in public health.</p>
+
+            <p>This belief has made me increasingly interested in the future of public health communication.</p>
+
+            <p>As the way people access and consume information continues to change, particularly with the rapid growth of digital platforms and artificial intelligence, I have been thinking about how public health can adapt to this changing communication environment.</p>
+
+            <p>Beginning with this thought, I looked at where I stand, and for sure, at the <strong>Province Public Health Office, Nawalparasi (East of Bardaghat Susta)</strong>, where I am currently working as a Public Health Officer, along with our team we tried to explore some of these possibilities through a small initiative called <strong>“Swastima”</strong>.</p>
+
+            <h2>From Health Information to Health Communication</h2>
+
+            <p>Looking back, when I was not very aware of public health, public health communication relied heavily on posters, pamphlets, radio messages, orientations, community meetings, interpersonal communication, and face-to-face health education. And at that time, and in some context/settings today too, these approaches remain extremely important, particularly for reaching communities where digital access may still be limited.</p>
+
+            <p>However, communication is now changing, and so the context is as well.</p>
+
+            <p>Now, people increasingly consume information through short videos, social media, visual storytelling, and other digital formats. Younger generations, in particular, are growing up in an environment where information is not only read or listened to; it is watched, experienced, shared, and discussed.</p>
+
+            <p>This raises an important question for public health: <em>If the way people consume information is changing, should the way we communicate health messages also evolve?</em> For me, the answer is yes. And for me, this does not mean replacing conventional health education approaches, but rather it means expanding our communication toolbox.</p>
+
+            <h2>Exploring AI Through SWASTIMA</h2>
+
+            <p>With this idea, we started exploring how Artificial Intelligence (AI) could support the development of health education and communication materials. This led to the development of <strong>SWASTIMA</strong>, an AI-assisted approach for creating Health Education, Information and Communication (HEIC) videos. What started as an experiment has gradually become something more meaningful for us.</p>
+
+            <p>Today, SWASTIMA almost feels like a digital member of the office, helping us turn ideas into scripts, visuals, voices, and health communication content in ways that would otherwise require considerable time and resources. Of course, SWASTIMA does not replace the people behind the work. The public health message, evidence, context, creativity, and final judgement still come from us. But having a digital assistant that can help us move from an idea to a communication product much faster has changed the way I think about what is possible.</p>
+
+            <p>And now… so far, around 4-5 health communication videos have been developed as part of this experimentation. The objective is not simply to produce videos using AI. The real objective is to explore whether emerging technologies can help us transform technical public health information into content that is more engaging, understandable, creative, and relevant to today’s audiences.</p>
+
+            <!-- Video Reel Card 1 -->
+            <div class="reel-card">
+                <div class="row g-0 align-items-center">
+                    <div class="col-md-5">
+                        <img src="images/swastima-immunization.jpg" alt="District Full Immunization Declaration Event" class="reel-img">
+                    </div>
+                    <div class="col-md-7">
+                        <div class="reel-card-body">
+                            <div class="reel-title">SWASTIMA Informing about District Full Immunization Declaration Event</div>
+                            <p class="text-muted small mb-3">Watch how AI-generated content delivered key immunization awareness updates to local communities.</p>
+                            <a href="https://www.facebook.com/reel/1488501086646621" target="_blank" class="reel-btn">
+                                <i class="fa-brands fa-facebook-f"></i> Watch Facebook Reel
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video Reel Card 2 -->
+            <div class="reel-card">
+                <div class="row g-0 align-items-center">
+                    <div class="col-md-5">
+                        <img src="images/swastima-nutrition.jpg" alt="National Nutrition Screening Program 2082 BS" class="reel-img">
+                    </div>
+                    <div class="col-md-7">
+                        <div class="reel-card-body">
+                            <div class="reel-title">SWASTIMA Informing about National Nutrition Screening Program 2082 BS</div>
+                            <p class="text-muted small mb-3">AI-driven video explaining nutrition screening goals and community participation steps.</p>
+                            <a href="https://www.facebook.com/reel/959198313769607" target="_blank" class="reel-btn">
+                                <i class="fa-brands fa-facebook-f"></i> Watch Facebook Reel
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h2>Why This Matters to Me</h2>
+
+            <p>What excites me most about this work is not the technology itself. It is the possibility of bringing together three core components:</p>
+
+            <ul class="styled-list">
+                <li><strong>Public Health Knowledge:</strong> Provides the evidence base and underlying purpose.</li>
+                <li><strong>Human Creativity:</strong> Helps us translate technical evidence into meaningful, empathetic messaging.</li>
+                <li><strong>Emerging Technology:</strong> Enables us to explore modern formats, speed up content production, and scale reach.</li>
+            </ul>
+
+            <p>When these come together thoughtfully, I believe we can create communication that is not only informative but also more engaging and relatable. This is particularly important at a time when public health professionals are competing for people’s attention in an increasingly crowded information environment.</p>
+
+            <p>A health message may be scientifically correct, but if nobody watches it, understands it, remembers it, or finds it relevant, its public health impact may remain limited. That is why I increasingly see communication not as an additional component of public health work, but as an essential part of it.</p>
+
+            <!-- Video Reel Card 3 -->
+            <div class="reel-card">
+                <div class="row g-0 align-items-center">
+                    <div class="col-md-5">
+                        <img src="images/swastima-vitamin-capsule.jpg" alt="Cartoonized AI Vitamin A Capsule" class="reel-img">
+                    </div>
+                    <div class="col-md-7">
+                        <div class="reel-card-body">
+                            <div class="reel-title">Cartoonized AI Vitamin A Capsule Informing Supplementation Program</div>
+                            <p class="text-muted small mb-3">Creative animated story mascot introducing Vitamin A and Albendazole supplementation.</p>
+                            <a href="https://www.facebook.com/reel/1491605586082185" target="_blank" class="reel-btn">
+                                <i class="fa-brands fa-facebook-f"></i> Watch Facebook Reel
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h2>From IEC to HEIC and Beyond</h2>
+
+            <p>For many years, we have commonly used the language of IEC—Information, Education and Communication. The principles behind IEC remain highly relevant, but today’s communication environment invites us to think beyond simply providing information. Perhaps the future is about creating communication that encourages people to notice, understand, engage, reflect, and act.</p>
+
+            <p>For me, SWASTIMA represents a small step in that direction:</p>
+
+            <ul class="styled-list">
+                <li>From <strong>information</strong> &rarr; to <strong>engagement</strong></li>
+                <li>From <strong>conventional IEC</strong> &rarr; to <strong>AI-assisted digital HEIC</strong></li>
+                <li>From <strong>simply delivering messages</strong> &rarr; to <strong>exploring new ways of connecting with people</strong></li>
+            </ul>
+
+            <p>This is not a replacement for community engagement, health workers, interpersonal communication, or traditional media. Rather, for me it is an attempt to add another layer to the way we communicate.</p>
+
+            <!-- Video Reel Card 4 -->
+            <div class="reel-card">
+                <div class="row g-0 align-items-center">
+                    <div class="col-md-5">
+                        <img src="images/swastima-vitamin-program.jpg" alt="SWASTIMA National Vitamin A Program" class="reel-img">
+                    </div>
+                    <div class="col-md-7">
+                        <div class="reel-card-body">
+                            <div class="reel-title">SWASTIMA Informing National Vitamin A and Albendazole Supplementation Program</div>
+                            <p class="text-muted small mb-3">Comprehensive public health briefing video on child supplementation coverage.</p>
+                            <a href="https://www.facebook.com/reel/927478640277210" target="_blank" class="reel-btn">
+                                <i class="fa-brands fa-facebook-f"></i> Watch Facebook Reel
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h2>Learning Through Experimentation</h2>
+
+            <p>SWASTIMA is still very much a learning journey. We are experimenting. Some ideas work well. Some need improvement. Some may not work at all. And that is perfectly fine.</p>
+
+            <p>Innovation does not always begin with a perfect product. Sometimes, it begins with curiosity, experimentation, and the willingness to learn from what does not work. Working with AI has also reminded me that technology should be approached with both curiosity and responsibility.</p>
+
+            <blockquote>
+                In public health, accuracy matters, context matters, ethics matter, trust matters, and ultimately, people matter.
+            </blockquote>
+
+            <p>Therefore, the use of AI in health communication cannot simply be about making content faster or more visually attractive. It should be about using technology responsibly to improve the way evidence-based health information reaches people.</p>
+
+            <h2>Looking Ahead</h2>
+
+            <p>We are still at an early stage of understanding what AI can mean for public health communication in our context. There are many possibilities yet to explore from multilingual health communication and personalized educational content to digital storytelling, community engagement, training materials, and new approaches to health promotion.</p>
+
+            <p>But there are also important questions we need to keep asking:</p>
+            <ul class="styled-list">
+                <li>How do we ensure accuracy?</li>
+                <li>How do we protect trust?</li>
+                <li>How do we avoid misinformation?</li>
+                <li>How do we make digital communication inclusive?</li>
+                <li>And most importantly, how do we ensure that technology remains a tool for public health rather than becoming the purpose itself?</li>
+            </ul>
+
+            <p>I do not have all the answers. But perhaps we do not need to have them yet. What we need is the willingness to explore, evaluate, learn, and improve.</p>
+
+            <p>For me, SWASTIMA is not the destination. It is an experiment; a small attempt to imagine what public health communication could look like in a rapidly changing digital world.</p>
+
+            <p>Perhaps the most important lesson so far is simple: <strong>Innovation in public health does not always mean doing something completely new. Sometimes, it means finding a new way to do what we have always cared about—reaching people, communicating knowledge, and improving health.</strong></p>
+
+            <p>The future of public health communication is changing. And I believe we should be ready to change with it.</p>
+
+        </article>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
