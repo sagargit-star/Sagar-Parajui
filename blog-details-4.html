@@ -101,37 +101,49 @@
             color: #cbd5e1;
         }
 
-        /* Video Showcase Cards */
+        /* Video Showcase Cards - Clean Text Version */
         .reel-card {
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
             border-radius: 12px;
-            overflow: hidden;
+            padding: 24px;
             margin: 30px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .reel-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.6);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.6);
+            border-color: #4a5568;
         }
 
-        .reel-img {
-            width: 100%;
-            height: 280px;
-            object-fit: cover;
-            filter: brightness(0.9);
-        }
-
-        .reel-card-body {
-            padding: 20px;
+        .reel-info {
+            flex: 1;
+            min-width: 280px;
         }
 
         .reel-title {
-            font-size: 1.15rem;
-            font-weight: 600;
-            margin-bottom: 10px;
-            color: #fff;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #ffffff;
+        }
+
+        /* High contrast description styling */
+        .reel-description {
+            color: #e2e8f0 !important;
+            font-size: 0.98rem;
+            line-height: 1.5;
+            margin: 0;
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 10px 14px;
+            border-radius: 6px;
+            border-left: 3px solid var(--accent-pink);
         }
 
         .reel-btn {
@@ -141,16 +153,18 @@
             background: linear-gradient(135deg, #1877f2, #0056b3);
             color: white;
             text-decoration: none;
-            padding: 8px 18px;
-            border-radius: 20px;
+            padding: 10px 22px;
+            border-radius: 24px;
             font-weight: 600;
-            font-size: 0.9rem;
-            transition: opacity 0.2s ease;
+            font-size: 0.95rem;
+            white-space: nowrap;
+            transition: transform 0.2s ease, opacity 0.2s ease;
         }
 
         .reel-btn:hover {
             color: white;
-            opacity: 0.9;
+            opacity: 0.92;
+            transform: scale(1.03);
         }
 
         /* Highlight List */
@@ -237,40 +251,26 @@
 
             <p>And now… so far, around 4-5 health communication videos have been developed as part of this experimentation. The objective is not simply to produce videos using AI. The real objective is to explore whether emerging technologies can help us transform technical public health information into content that is more engaging, understandable, creative, and relevant to today’s audiences.</p>
 
-            <!-- Video Reel Card 1 -->
+            <!-- Video Card 1 -->
             <div class="reel-card">
-                <div class="row g-0 align-items-center">
-                    <div class="col-md-5">
-                        <img src="images/swastima-immunization.jpg" alt="District Full Immunization Declaration Event" class="reel-img">
-                    </div>
-                    <div class="col-md-7">
-                        <div class="reel-card-body">
-                            <div class="reel-title">SWASTIMA Informing about District Full Immunization Declaration Event</div>
-                            <p class="text-muted small mb-3">Watch how AI-generated content delivered key immunization awareness updates to local communities.</p>
-                            <a href="https://www.facebook.com/reel/1488501086646621" target="_blank" class="reel-btn">
-                                <i class="fa-brands fa-facebook-f"></i> Watch Facebook Reel
-                            </a>
-                        </div>
-                    </div>
+                <div class="reel-info">
+                    <div class="reel-title">SWASTIMA Informing about District Full Immunization Declaration Event</div>
+                    <p class="reel-description">SWASTIMA informing about District Full Immunization Declaration Event</p>
                 </div>
+                <a href="https://www.facebook.com/reel/1488501086646621" target="_blank" class="reel-btn">
+                    <i class="fa-brands fa-facebook-f"></i> Watch Video
+                </a>
             </div>
 
-            <!-- Video Reel Card 2 -->
+            <!-- Video Card 2 -->
             <div class="reel-card">
-                <div class="row g-0 align-items-center">
-                    <div class="col-md-5">
-                        <img src="images/swastima-nutrition.jpg" alt="National Nutrition Screening Program 2082 BS" class="reel-img">
-                    </div>
-                    <div class="col-md-7">
-                        <div class="reel-card-body">
-                            <div class="reel-title">SWASTIMA Informing about National Nutrition Screening Program 2082 BS</div>
-                            <p class="text-muted small mb-3">AI-driven video explaining nutrition screening goals and community participation steps.</p>
-                            <a href="https://www.facebook.com/reel/959198313769607" target="_blank" class="reel-btn">
-                                <i class="fa-brands fa-facebook-f"></i> Watch Facebook Reel
-                            </a>
-                        </div>
-                    </div>
+                <div class="reel-info">
+                    <div class="reel-title">SWASTIMA Informing about National Nutrition Screening Program 2082 BS</div>
+                    <p class="reel-description">SWASTIMA informing about National Nutrition Screening Program 2082 BS</p>
                 </div>
+                <a href="https://www.facebook.com/reel/959198313769607" target="_blank" class="reel-btn">
+                    <i class="fa-brands fa-facebook-f"></i> Watch Video
+                </a>
             </div>
 
             <h2>Why This Matters to Me</h2>
@@ -287,22 +287,15 @@
 
             <p>A health message may be scientifically correct, but if nobody watches it, understands it, remembers it, or finds it relevant, its public health impact may remain limited. That is why I increasingly see communication not as an additional component of public health work, but as an essential part of it.</p>
 
-            <!-- Video Reel Card 3 -->
+            <!-- Video Card 3 -->
             <div class="reel-card">
-                <div class="row g-0 align-items-center">
-                    <div class="col-md-5">
-                        <img src="images/swastima-vitamin-capsule.jpg" alt="Cartoonized AI Vitamin A Capsule" class="reel-img">
-                    </div>
-                    <div class="col-md-7">
-                        <div class="reel-card-body">
-                            <div class="reel-title">Cartoonized AI Vitamin A Capsule Informing Supplementation Program</div>
-                            <p class="text-muted small mb-3">Creative animated story mascot introducing Vitamin A and Albendazole supplementation.</p>
-                            <a href="https://www.facebook.com/reel/1491605586082185" target="_blank" class="reel-btn">
-                                <i class="fa-brands fa-facebook-f"></i> Watch Facebook Reel
-                            </a>
-                        </div>
-                    </div>
+                <div class="reel-info">
+                    <div class="reel-title">Cartoonized AI Vitamin A Capsule</div>
+                    <p class="reel-description">Cartoonized AI Vitamin A Capsule informing National Vitamin A and Albendazole Supplementation Program</p>
                 </div>
+                <a href="https://www.facebook.com/reel/1491605586082185" target="_blank" class="reel-btn">
+                    <i class="fa-brands fa-facebook-f"></i> Watch Video
+                </a>
             </div>
 
             <h2>From IEC to HEIC and Beyond</h2>
@@ -319,22 +312,15 @@
 
             <p>This is not a replacement for community engagement, health workers, interpersonal communication, or traditional media. Rather, for me it is an attempt to add another layer to the way we communicate.</p>
 
-            <!-- Video Reel Card 4 -->
+            <!-- Video Card 4 -->
             <div class="reel-card">
-                <div class="row g-0 align-items-center">
-                    <div class="col-md-5">
-                        <img src="images/swastima-vitamin-program.jpg" alt="SWASTIMA National Vitamin A Program" class="reel-img">
-                    </div>
-                    <div class="col-md-7">
-                        <div class="reel-card-body">
-                            <div class="reel-title">SWASTIMA Informing National Vitamin A and Albendazole Supplementation Program</div>
-                            <p class="text-muted small mb-3">Comprehensive public health briefing video on child supplementation coverage.</p>
-                            <a href="https://www.facebook.com/reel/927478640277210" target="_blank" class="reel-btn">
-                                <i class="fa-brands fa-facebook-f"></i> Watch Facebook Reel
-                            </a>
-                        </div>
-                    </div>
+                <div class="reel-info">
+                    <div class="reel-title">National Vitamin A and Albendazole Supplementation Program</div>
+                    <p class="reel-description">SWASTIMA informing National Vitamin A and Albendazole Supplementation Program</p>
                 </div>
+                <a href="https://www.facebook.com/reel/927478640277210" target="_blank" class="reel-btn">
+                    <i class="fa-brands fa-facebook-f"></i> Watch Video
+                </a>
             </div>
 
             <h2>Learning Through Experimentation</h2>
